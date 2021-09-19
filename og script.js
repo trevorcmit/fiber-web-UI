@@ -11,6 +11,7 @@ let isGettingData = false;
 let hibouDevices = [];
 let rightDevice = false;
 let scannedSensorData = []
+
 var chartColors = {
 	red: 'rgb(255, 99, 132)',
 	orange: 'rgb(255, 159, 64)',
@@ -33,12 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const notSupported = document.getElementById("notSupported");
   notSupported.classList.toggle("hidden", "serial" in navigator);
 });
-
-
-
-
-
-
 function randomScalingFactor() {
 	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
 }
@@ -68,6 +63,11 @@ function onRefresh(chart) {
               y: scannedSensorData.pm25
                 });        
 }
+
+
+// ##############################################
+// ############# GRAPH FORMATTING ###############
+// ##############################################
 var config = {
 	type: 'line',
 	data: {
@@ -153,7 +153,6 @@ data: []
           zoom: {
               // Boolean to enable zooming
               enabled: true,
-
               // Zooming directions. Remove the appropriate direction to disable 
               // Eg. 'y' would only allow zooming in the y direction
               mode: 'x',
@@ -170,6 +169,7 @@ data: []
 		}
 	}
 };
+
 var colorNames = Object.keys(chartColors);
 
 /**
@@ -264,6 +264,7 @@ function getSelectedDevice(selectObject) {
  * If isScanning = false: Goes into Central mode and starts scanning for ble devices. Also changes button text and hides the beacon buttons. Finally sets isScanning = true.
  */
 function clickScan() {
+
   console.log("SCAN BUTTON PRESSED");
   if (isScanning) {
     writeCmd("\x03"); // Ctrl+C to stop the scan
@@ -273,9 +274,9 @@ function clickScan() {
     isScanning = false;
     butGetData.removeAttribute("disabled");
     butScan.textContent = "Scan BLE Devices";
-    
     return;
   }
+
   hibouDevices = [];
   writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
   setTimeout(() => {
@@ -299,7 +300,7 @@ function clickScan() {
 function clickGetData() {
   console.log("GET DATA BUTTON PRESSED");
   if (isGettingData) {
-    writeCmd("\x01"); // Ctrl+C to stop the scan
+    writeCmd("\x03"); // Ctrl+C to stop the scan
     setTimeout(() => {
       writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
     }, 500); // Waiting half a bit to make sure each command will get through separately.
@@ -311,9 +312,15 @@ function clickGetData() {
     butGetData.textContent = "Get Data";
     return;
   }
+  // writeCmd('AT+SPSSEND=0x01')
+
   writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
+  // writeCmd('AT+SPSSEND=0x01')
   setTimeout(() => {
-   writeCmd("AT+FINDSCANDATA=0"); // Will just scan for adv data that contains 'FF5B07' which is the tag for Manufaturing Specific Data (FF) and our Company ID (5B07).
+    // writeCmd('AT+SPSSEND=0x01')
+    writeCmd("AT+FINDSCANDATA=1EFF"); // Will just scan for adv data that contains 'FF5B07' which is the tag for Manufaturing Specific Data (FF) and our Company ID (5B07).
+    // writeCmd("AT+FINDSCANDATA=FF00D2"); // 00D2 is Dialog Semiconductor company identifier
+    // writeCmd("AT+FINDSCANDATA=FF5");
   }, 500); // Waiting half a bit to make sure each command will get through separately.
 
   butGetData.textContent = "Stop Getting Data...";
@@ -323,6 +330,7 @@ function clickGetData() {
   isGettingData = true;
     var ctx = document.getElementById('myChart').getContext('2d');
   window.myChart = new Chart(ctx, config);
+  
 }
 
 /**
@@ -345,18 +353,10 @@ async function readLoop() {
       }
       let lineValueArray = value.split(" ");
       if (lineValueArray[6] === "(IFM-Fiber)") {
-	console.log("lineValueArray[1] is " + lineValueArray[1]);
-  	console.log("lineValueArray[2] is " + lineValueArray[2]);
-	console.log("lineValueArray[3] is " + lineValueArray[3]);
-  	console.log("lineValueArray[4] is " + lineValueArray[4]);
-	console.log("lineValueArray[5] is " + lineValueArray[5]);
-  	console.log("lineValueArray[6] is " + lineValueArray[6]);
-
         if(lineValueArray[2]) {
           hibouDevices.push("["+lineValueArray[2].replace("[1]", "") +"]");
-
         }
-        log.textContent = "\n" + "hibouDevices found: " + hibouDevices.length + "\n";
+        log.textContent = "\n" + "Devices found: " + hibouDevices.length + "\n";
       }
       if(value === "SCAN COMPLETE") {
         var select = document.getElementById("devices");
@@ -377,27 +377,13 @@ async function readLoop() {
         butScan.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
-      //console.log("Second line value is " + value);
-
+      
       let lineValueArray = value.split(" ");
-            console.log("Second line: lineValueArray[0] is " + lineValueArray[0]);
-	  //  console.log("Second line: lineValueArray[1] is " + lineValueArray[1]);
-  	  //  console.log("Second line: lineValueArray[2] is " + lineValueArray[2]);
-	    console.log("Second line: lineValueArray[3] is " + lineValueArray[3]);
-  	    console.log("Second line: lineValueArray[4] is " + lineValueArray[4]);
-	  //  console.log("Second line: lineValueArray[5] is " + lineValueArray[5]);
-  	  //  console.log("Second line: lineValueArray[6] is " + lineValueArray[6]);
-
-        //console.log(" localStorage.getItem("selectedDevice") " +  localStorage.getItem("selectedDevice"));
-
-       if (lineValueArray[3] === "[ADV]:") {
+        if (lineValueArray[0] ===   localStorage.getItem("selectedDevice") && lineValueArray[3] === "[ADV]:") {
           //console.log("CONSOLE.LOG= "+value);
- 	 
         
       // Second line contains the actual advdata string we need to parse
-        console.log("Third line: lineValueArray[4] is" + lineValueArray[4]);
         scannedSensorData = parseSensorData(lineValueArray[4]);
-
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
 //console.log(scannedSensorData.p)
         //console.log("CONSOLE.LOG= "+value);
