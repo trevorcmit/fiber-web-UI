@@ -303,21 +303,22 @@ async function readLoop() {
         butGetData.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
+
       let lineValueArray = value.split(" ");
       if (lineValueArray[6] === "(IFM-Fiber)") {
-	console.log("lineValueArray[1] is " + lineValueArray[1]);
-  	console.log("lineValueArray[2] is " + lineValueArray[2]);
-	console.log("lineValueArray[3] is " + lineValueArray[3]);
-  	console.log("lineValueArray[4] is " + lineValueArray[4]);
-	console.log("lineValueArray[5] is " + lineValueArray[5]);
-  	console.log("lineValueArray[6] is " + lineValueArray[6]);
+        console.log("lineValueArray[1] is " + lineValueArray[1]);
+          console.log("lineValueArray[2] is " + lineValueArray[2]);
+        console.log("lineValueArray[3] is " + lineValueArray[3]);
+          console.log("lineValueArray[4] is " + lineValueArray[4]);
+        console.log("lineValueArray[5] is " + lineValueArray[5]);
+          console.log("lineValueArray[6] is " + lineValueArray[6]);
 
         if(lineValueArray[2]) {
           hibouDevices.push("["+lineValueArray[2].replace("[1]", "") +"]");
-
         }
         log.textContent = "\n" + "hibouDevices found: " + hibouDevices.length + "\n";
       }
+
       if(value === "SCAN COMPLETE") {
         var select = document.getElementById("devices");
         hibouDevices.map(function(item){
@@ -327,8 +328,8 @@ async function readLoop() {
           select.appendChild(option)
         });
       }
-
     }
+
     if (value && isGettingData) {
       if(value === "SCAN COMPLETE") {
         isGettingData = false;
@@ -344,16 +345,12 @@ async function readLoop() {
    // setTimeout(() => {
    //writeCmd("AT+GETCONN"); //  Scanning to make sure the GATT profile is connected
   //}, 1000); // Waiting half a bit to make sure each command will get through separately.
- 
 
  // writeCmd("AT+SETNOTI=001F"); 
 
    //setTimeout(() => {
   // writeCmd("AT+SETNOTI=001F"); // *************Get notified of the adc values
  // }, 5000); // ***********
- 
- 
-
 	 //console.log("Second line: lineValueArray is " + lineValueArray);
           //  console.log("Second line: lineValueArray[0] is " + lineValueArray[0]);
 	  //  console.log("Second line: lineValueArray[1] is " + lineValueArray[1]);
@@ -363,23 +360,16 @@ async function readLoop() {
 	   // console.log("Second line: lineValueArray[5] is " + lineValueArray[5]);
   	   // console.log("Second line: lineValueArray[6] is " + lineValueArray[6]);
 	 
-
        //console.log(" localStorage " +  localStorage.getItem("selectedDevice"));
 
-	
-
        if ( lineValueArray[0] ===   "Hex:") {
-         
        // console.log("Third line: lineValueArray[1] is" + lineValueArray[1]);
         scannedSensorData = parseSensorData(lineValueArray[1]);
-
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
-	
-
         //console.log("CONSOLE.LOG= "+value);
       }
-
     }
+
     if (done) {
       console.log("[readLoop] DONE", done);
       reader.releaseLock();
@@ -387,6 +377,7 @@ async function readLoop() {
     }
   }
 }
+
 /**
  * @name writeCmd
  * Gets a writer from the output stream and send the command to the Smart USB Dongle 2.0.
