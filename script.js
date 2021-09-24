@@ -37,8 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
 function randomScalingFactor() {
 	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
 }
@@ -91,14 +89,9 @@ var config = {
 			}]
     },
     plugins: {
-      zoom: {
-            // Container for zoom options
+      zoom: { // Container for zoom options
           zoom: {
-              // Boolean to enable zooming
-              enabled: true,
-
-              // Zooming directions. Remove the appropriate direction to disable 
-              // Eg. 'y' would only allow zooming in the y direction
+              enabled: true, // Boolean to enable zooming
               mode: 'x',
           }
       }
@@ -121,10 +114,8 @@ var colorNames = Object.keys(chartColors);
  * output stream.
  */
 async function connect() {
-  // - Request a port and open a connection.
-  port = await navigator.serial.requestPort();
-  // - Wait for the port to open.
-  await port.open({ baudRate: 115200 });
+  port = await navigator.serial.requestPort();  // - Request a port and open a connection.
+  await port.open({ baudRate: 115200 });        // - Wait for the port to open.
 
   const encoder = new TextEncoderStream();
   outputDone = encoder.readable.pipeTo(port.writable);
@@ -269,8 +260,6 @@ function clickGetData() {
    writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
   }, 1000); // **********Waiting half a bit to make sure each command will get through separately.
  
-
-
   //setTimeout(() => {
  //  writeCmd("AT+FINDSCANDATA=0"); // Will just scan for adv data that contains 'FF5B07' which is the tag for Manufaturing Specific Data (FF) and our Company ID (5B07).
  // }, 500); // Waiting half a bit to make sure each command will get through separately.
