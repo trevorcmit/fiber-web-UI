@@ -1,0 +1,2 @@
+Format:
+SensorData= {"sensorid":"FF4C00","p":666.6,"t":2533.8,"h":6476.3,"voc":0,"als":1552,"pm1":0,"pm25":0,"pm10":0}
