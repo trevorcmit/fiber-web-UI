@@ -46,84 +46,27 @@ function onRefresh(chart) {
     chart.config.data.datasets[0].data.push({
 			x: Date.now(),
 			y: scannedSensorData.p
-        });
-    chart.config.data.datasets[1].data.push({
-			x: Date.now(),
-			y: scannedSensorData.t
-        });
-        chart.config.data.datasets[2].data.push({
-			x: Date.now(),
-			y: scannedSensorData.als
-        }); 
-        chart.config.data.datasets[3].data.push({
-          x: Date.now(),
-          y: scannedSensorData.voc
-            }); 
-        chart.config.data.datasets[4].data.push({
-          x: Date.now(),
-          y: scannedSensorData.h
-            }); 
-            chart.config.data.datasets[5].data.push({
-              x: Date.now(),
-              y: scannedSensorData.pm25
-                });        
+        });        
 }
+
+
 var config = {
 	type: 'line',
 	data: {
 		datasets: [ {
-			label: 'Pressure',
+			label: 'Heart Sound',
 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
 			borderColor: chartColors.red,
 			fill: false,
 			cubicInterpolationMode: 'monotone',
 			data: []
-        },
-        {
-			label: 'Temperature',
-			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-			borderColor: chartColors.blue,
-			fill: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-        {
-			label: 'Light',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-    },
-    {
-			label: 'VOC',
-			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-			borderColor: chartColors.grey,
-			fill: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-    {
-  label: 'Humidity',
-  backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-  borderColor: chartColors.green,
-  fill: false,
-  cubicInterpolationMode: 'monotone',
-  data: []
-},
-{
-label: 'PM 2.5',
-backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-borderColor: chartColors.purple,
-fill: false,
-cubicInterpolationMode: 'monotone',
-data: []
-}]
+        }
+        ]
 	},
 	options: {
 		title: {
 			display: true,
-			text: 'Hibou - Realtime data'
+			text: 'Heart Sounds- Realtime data'
     },
 
 		scales: {
@@ -131,8 +74,8 @@ data: []
 				type: 'realtime',
 				realtime: {
 					duration: 20000,
-					refresh: 2000,
-          delay: 2000,
+					refresh: 200,
+          delay: 200,
           ttl:1000000,
 					onRefresh: onRefresh
         },
@@ -181,7 +124,7 @@ async function connect() {
   // - Request a port and open a connection.
   port = await navigator.serial.requestPort();
   // - Wait for the port to open.
-  await port.open({ baudRate: 9600 });
+  await port.open({ baudRate: 115200 });
 
   const encoder = new TextEncoderStream();
   outputDone = encoder.readable.pipeTo(port.writable);
@@ -278,16 +221,21 @@ function clickScan() {
   }
   hibouDevices = [];
   writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
-  setTimeout(() => {
+  
+setTimeout(() => {
     writeCmd("AT+GAPSCAN=3");
   }, 500); // Waiting half a bit to make sure each command will get through separately.
 
+ 
   butScan.textContent = "Stop Scanning...";
   butGetData.setAttribute("disabled", "true");
   log.classList.toggle("d-none", false);
 
   isScanning = true;
 }
+
+
+
 
 /**
  * @name clickGetData
@@ -299,7 +247,7 @@ function clickScan() {
 function clickGetData() {
   console.log("GET DATA BUTTON PRESSED");
   if (isGettingData) {
-    writeCmd("\x01"); // Ctrl+C to stop the scan
+    //writeCmd("string"); // Ctrl+C to stop the scan//previos \x01
     setTimeout(() => {
       writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
     }, 500); // Waiting half a bit to make sure each command will get through separately.
@@ -312,9 +260,20 @@ function clickGetData() {
     return;
   }
   writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
-  setTimeout(() => {
-   writeCmd("AT+FINDSCANDATA=0"); // Will just scan for adv data that contains 'FF5B07' which is the tag for Manufaturing Specific Data (FF) and our Company ID (5B07).
-  }, 500); // Waiting half a bit to make sure each command will get through separately.
+  writeCmd("ATDS0"); // Prevent print output
+    writeCmd("ATA0");//Prevent print output
+
+   writeCmd("AT+GAPCONNECT=[0]48:23:35:00:00:E5");  
+
+ setTimeout(() => {
+   writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
+  }, 1000); // **********Waiting half a bit to make sure each command will get through separately.
+ 
+
+
+  //setTimeout(() => {
+ //  writeCmd("AT+FINDSCANDATA=0"); // Will just scan for adv data that contains 'FF5B07' which is the tag for Manufaturing Specific Data (FF) and our Company ID (5B07).
+ // }, 500); // Waiting half a bit to make sure each command will get through separately.
 
   butGetData.textContent = "Stop Getting Data...";
   butScan.setAttribute("disabled", "true");
@@ -323,6 +282,7 @@ function clickGetData() {
   isGettingData = true;
     var ctx = document.getElementById('myChart').getContext('2d');
   window.myChart = new Chart(ctx, config);
+  
 }
 
 /**
@@ -377,29 +337,45 @@ async function readLoop() {
         butScan.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
-      //console.log("Second line value is " + value);
+     
 
       let lineValueArray = value.split(" ");
-            console.log("Second line: lineValueArray[0] is " + lineValueArray[0]);
+            
+   // setTimeout(() => {
+   //writeCmd("AT+GETCONN"); //  Scanning to make sure the GATT profile is connected
+  //}, 1000); // Waiting half a bit to make sure each command will get through separately.
+ 
+
+ // writeCmd("AT+SETNOTI=001F"); 
+
+   //setTimeout(() => {
+  // writeCmd("AT+SETNOTI=001F"); // *************Get notified of the adc values
+ // }, 5000); // ***********
+ 
+ 
+
+	 //console.log("Second line: lineValueArray is " + lineValueArray);
+          //  console.log("Second line: lineValueArray[0] is " + lineValueArray[0]);
 	  //  console.log("Second line: lineValueArray[1] is " + lineValueArray[1]);
   	  //  console.log("Second line: lineValueArray[2] is " + lineValueArray[2]);
-	    console.log("Second line: lineValueArray[3] is " + lineValueArray[3]);
-  	    console.log("Second line: lineValueArray[4] is " + lineValueArray[4]);
-	  //  console.log("Second line: lineValueArray[5] is " + lineValueArray[5]);
-  	  //  console.log("Second line: lineValueArray[6] is " + lineValueArray[6]);
+	  //  console.log("Second line: lineValueArray[3] is " + lineValueArray[3]);
+  	   // console.log("Second line: lsineValueArray[4] is " + lineValueArray[4]);
+	   // console.log("Second line: lineValueArray[5] is " + lineValueArray[5]);
+  	   // console.log("Second line: lineValueArray[6] is " + lineValueArray[6]);
+	 
 
-        //console.log(" localStorage.getItem("selectedDevice") " +  localStorage.getItem("selectedDevice"));
+       //console.log(" localStorage " +  localStorage.getItem("selectedDevice"));
 
-       if (lineValueArray[3] === "[ADV]:") {
-          //console.log("CONSOLE.LOG= "+value);
- 	 
-        
-      // Second line contains the actual advdata string we need to parse
-        console.log("Third line: lineValueArray[4] is" + lineValueArray[4]);
-        scannedSensorData = parseSensorData(lineValueArray[4]);
+	
+
+       if ( lineValueArray[0] ===   "Hex:") {
+         
+       // console.log("Third line: lineValueArray[1] is" + lineValueArray[1]);
+        scannedSensorData = parseSensorData(lineValueArray[1]);
 
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
-//console.log(scannedSensorData.p)
+	
+
         //console.log("CONSOLE.LOG= "+value);
       }
 
@@ -477,83 +453,21 @@ function toggleUIConnected(connected) {
  * @returns {object ={sensorid:{string}, p:{int}, t:{int}, h:{int}, als:{int}, pm1:{int}, pm25:{int}, pm10:{int}}} 
  */
 function parseSensorData(input) {
-  let counter = 13;
-  if (input.includes("5B070503")) {
-    counter = 17;
-  }
+  let counter = 0;
+  
   let sensorData = {
     sensorid:
-      input[counter + 1] +
       input[counter + 2] +
-      input[counter + 3] +
-      input[counter + 4] +
-      input[counter + 5] +
-      input[counter + 6],
+      input[counter + 3] ,
     p:
-      parseInt(
-        input[counter + 13] +
-          input[counter + 14] +
-          input[counter + 11] +
-          input[counter + 12],
-        16
-      ) / 10,
-    t:
-      parseInt(
-        input[counter + 17] +
-          input[counter + 18] +
-          input[counter + 15] +
-          input[counter + 16],
-        16
-      ) / 10,
-    h:
-      parseInt(
-        input[counter + 21] +
-          input[counter + 22] +
-          input[counter + 19] +
-          input[counter + 20],
-        16
-      ) / 10,
-      voc:
-      parseInt(
-        input[counter + 25] +
-          input[counter + 26] +
-          input[counter + 23] +
-          input[counter + 24],
-        16
-      ) / 10,
-    als: parseInt(
-      input[counter + 9] +
-        input[counter + 10] +
-        input[counter + 7] +
-        input[counter + 8],
-      16
-    ),
-    pm1:
-      parseInt(
-        input[counter + 29] +
-          input[counter + 30] +
-          input[counter + 27] +
-          input[counter + 28],
-        16
-      ) / 10,
-    pm25:
-      parseInt(
-        input[counter + 33] +
-          input[counter + 34] +
-          input[counter + 31] +
-          input[counter + 32],
-        16
-      ) / 10,
-    pm10:
-      parseInt(
-        input[counter + 37] +
-          input[counter + 38] +
-          input[counter + 35] +
-          input[counter + 36],
-        16
-      ) / 10}
+      (input[counter + 2] +
+      input[counter + 3] + 
+      input[counter + 4]/10 ),
+  }
   return sensorData
 }
+
+
 // readLoop()
 //   .then((data) => { console.log(data)})
 window.onload = function() {
