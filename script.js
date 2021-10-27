@@ -352,10 +352,6 @@ var config = {
 		}
 
 
-
-
-
-
 ]
         
 	},
@@ -525,10 +521,9 @@ function clickScan() {
   hibouDevices = [];
   writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
   
-setTimeout(() => {
+  setTimeout(() => {
     writeCmd("AT+GAPSCAN=3");
   }, 500); // Waiting half a bit to make sure each command will get through separately.
-
  
   butScan.textContent = "Stop Scanning...";
   butGetData.setAttribute("disabled", "true");
@@ -536,8 +531,6 @@ setTimeout(() => {
 
   isScanning = true;
 }
-
-
 
 
 /**
@@ -566,7 +559,7 @@ function clickGetData() {
   writeCmd("ATDS0"); // Prevent print output
     writeCmd("ATA1");//Prevent print output
 
-   writeCmd("AT+GAPCONNECT=[0]48:23:35:00:09:C2");  //[0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
+   writeCmd("AT+GAPCONNECT=[0]48:23:35:00:08:8E");  //[0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
     
 
 
@@ -582,11 +575,6 @@ writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT 
   }, 5); // **********200, Waiting half a bit to make sure each command will get through separately.
  
 
-
-
-
-
- 
   butGetData.textContent = "Stop Getting Data...";
   butScan.setAttribute("disabled", "true");
   log.classList.toggle("d-none", false);
