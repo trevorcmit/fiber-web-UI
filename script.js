@@ -744,7 +744,7 @@ async function readLoop() {
       }
       if(value === "SCAN COMPLETE") {
         var select = document.getElementById("devices");
-        hibouDevices.map(function(item){
+        hibouDevices.map(function(item) {
           var option = document.createElement("option");
           option.value = item;
           option.text  = item;
@@ -761,31 +761,24 @@ async function readLoop() {
         butScan.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
-     
 
       let lineValueArray = value.split(" ");
 
+	    console.log("Second line: lineValueArray is " + lineValueArray);
 
-
-	 console.log("Second line: lineValueArray is " + lineValueArray);
-
-       if ( lineValueArray[1] ===   "received:") {
-         
+      if ( lineValueArray[1] ===   "received:") {
        // console.log("Third line: lineValueArray[1] is" + lineValueArray[1]);
-         let str = '';
+        let str = '';
       	for (var counter = 2; counter < 23; counter++) {
- 		str += lineValueArray[counter];
-   		str += ',';
-		}
-	 console.log("str is " + str);
-	 scannedSensorData = parseSensorData(str);
-
+ 		      str += lineValueArray[counter];
+   		    str += ',';
+		    }
+	      console.log("str is " + str);
+	      scannedSensorData = parseSensorData(str);
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
-	
 
         //console.log("CONSOLE.LOG= "+value);
       }
-
     }
     if (done) {
       console.log("[readLoop] DONE", done);
@@ -800,8 +793,7 @@ async function readLoop() {
  * @param  {string} cmd command to send to the Smart USB Dongle 2.0
  */
 function writeCmd(cmd) {
-  // Write to output stream
-  const writer = outputStream.getWriter();
+  const writer = outputStream.getWriter(); // Write to output stream
   console.log("[SEND]", cmd);
 
   writer.write(cmd);
@@ -859,98 +851,178 @@ function toggleUIConnected(connected) {
  * @param  {string} input advertising data string.
  * @returns {object ={sensorid:{string}, p:{int}, t:{int}, h:{int}, als:{int}, pm1:{int}, pm25:{int}, pm10:{int}}} 
  */
-function parseSensorData(input) {
-  let counter = 0;
-  const array = input.split(",");
-  console.log('array is' + array);
+
+// function parseSensorData(input) {
+//   let counter = 0;
+//   const array = input.split(",");
+//   console.log('array is' + array);
   
+//   let sensorData = {
+//     sensorid:
+//       input[counter + 2] +
+//       input[counter + 3] ,
+//     a:
+//       array[0],
+
+
+//       b:
+//       array[1],
+
+
+//    c:
+//        array[2],
+
+
+//   	d:
+//      array[3],
+
+//  	e:
+//       array[4],
+
+//  	f:
+//       array[5],
+
+
+//       g:
+//     array[6],
+
+
+//    h: 
+// 	array[7],
+
+//   	i:
+//       array[8],
+
+
+//  	j:
+//        array[9],
+
+//   k:
+//       array[10],
+
+
+//       l:
+//       array[11],
+
+
+//    m:
+//        array[12],
+
+
+//   	n:
+//      array[13],
+
+//  	o:
+//       array[14],
+
+//  	p:
+//       array[15],
+
+
+//       q:
+//     array[16],
+
+
+//    r: 
+// 	array[17],
+
+//   	s:
+//       array[18],
+
+
+//  	t:
+//        array[19],
+
+// 	u:
+//       array[20],
+
+
+//  	v:
+//        array[21],
+
+
+
+
+//   }
+//   return sensorData
+// }
+
+function parseSensorData(input) {
+  let counter = 13;
+  if (input.includes("5B070503")) {
+    counter = 17;
+  }
   let sensorData = {
     sensorid:
+      input[counter + 1] +
       input[counter + 2] +
-      input[counter + 3] ,
-    a:
-      array[0],
-
-
-      b:
-      array[1],
-
-
-   c:
-       array[2],
-
-
-  	d:
-     array[3],
-
- 	e:
-      array[4],
-
- 	f:
-      array[5],
-
-
-      g:
-    array[6],
-
-
-   h: 
-	array[7],
-
-  	i:
-      array[8],
-
-
- 	j:
-       array[9],
-
-  k:
-      array[10],
-
-
-      l:
-      array[11],
-
-
-   m:
-       array[12],
-
-
-  	n:
-     array[13],
-
- 	o:
-      array[14],
-
- 	p:
-      array[15],
-
-
-      q:
-    array[16],
-
-
-   r: 
-	array[17],
-
-  	s:
-      array[18],
-
-
- 	t:
-       array[19],
-
-	u:
-      array[20],
-
-
- 	v:
-       array[21],
-
-
-
-
-  }
+      input[counter + 3] +
+      input[counter + 4] +
+      input[counter + 5] +
+      input[counter + 6],
+    p:
+      parseInt(
+        input[counter + 13] +
+          input[counter + 14] +
+          input[counter + 11] +
+          input[counter + 12],
+        16
+      ) / 10,
+    t:
+      parseInt(
+        input[counter + 17] +
+          input[counter + 18] +
+          input[counter + 15] +
+          input[counter + 16],
+        16
+      ) / 10,
+    h:
+      parseInt(
+        input[counter + 21] +
+          input[counter + 22] +
+          input[counter + 19] +
+          input[counter + 20],
+        16
+      ) / 10,
+      voc:
+      parseInt(
+        input[counter + 25] +
+          input[counter + 26] +
+          input[counter + 23] +
+          input[counter + 24],
+        16
+      ) / 10,
+    als: parseInt(
+      input[counter + 9] +
+        input[counter + 10] +
+        input[counter + 7] +
+        input[counter + 8],
+      16
+    ),
+    pm1:
+      parseInt(
+        input[counter + 29] +
+          input[counter + 30] +
+          input[counter + 27] +
+          input[counter + 28],
+        16
+      ) / 10,
+    pm25:
+      parseInt(
+        input[counter + 33] +
+          input[counter + 34] +
+          input[counter + 31] +
+          input[counter + 32],
+        16
+      ) / 10,
+    pm10:
+      parseInt(
+        input[counter + 37] +
+          input[counter + 38] +
+          input[counter + 35] +
+          input[counter + 36],
+        16
+      ) / 10}
   return sensorData
 }
 
@@ -965,7 +1037,6 @@ function reversedNum(num) {
     ) * Math.sign(num)
   )                 
 }
-
 
 
 // readLoop()

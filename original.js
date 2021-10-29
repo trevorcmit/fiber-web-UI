@@ -541,6 +541,7 @@ function parseSensorData(input) {
       ) / 10}
   return sensorData
 }
+
 // readLoop()
 //   .then((data) => { console.log(data)})
 window.onload = function() {
