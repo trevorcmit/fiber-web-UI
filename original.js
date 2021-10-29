@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function randomScalingFactor() {
 	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
 }
+
 function onRefresh(chart) {
     chart.config.data.datasets[0].data.push({
 			x: Date.now(),
@@ -352,7 +353,7 @@ async function readLoop() {
         log.classList.toggle("d-none", false);
       }
       let lineValueArray = value.split(" ");
-      if (lineValueArray[6] === "(IFM-Fiber)") {
+      if (lineValueArray[6] === "(IFM-Fiber-6)") {
         if(lineValueArray[2]) {
           hibouDevices.push("["+lineValueArray[2].replace("[1]", "") +"]");
         }

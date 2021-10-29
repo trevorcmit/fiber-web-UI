@@ -43,326 +43,189 @@ function randomScalingFactor() {
 	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
 }
 
-function onRefresh(chart) {
-    chart.config.data.datasets[0].data.push({
-			x: Date.now(),
-			y: scannedSensorData.a
-        });
-   chart.config.data.datasets[1].data.push({
-			x: Date.now()+10,
-			y: scannedSensorData.b
-        });
-        chart.config.data.datasets[2].data.push({
-			x: Date.now()+20,
-			y: scannedSensorData.c
-        }); 
-        chart.config.data.datasets[3].data.push({
-          x: Date.now()+30,
-          y: scannedSensorData.d
-            }); 
-        chart.config.data.datasets[4].data.push({
-          x: Date.now()+40,
-          y: scannedSensorData.e
-            });
+// function onRefresh(chart) {
+//     chart.config.data.datasets[0].data.push({
+// 			x: Date.now(),
+// 			y: scannedSensorData[0]
+//         });
+//    chart.config.data.datasets[1].data.push({
+// 			x: Date.now()+10,
+// 			y: scannedSensorData.b
+//         });
+//         chart.config.data.datasets[2].data.push({
+// 			x: Date.now()+20,
+// 			y: scannedSensorData.c
+//         }); 
+//         chart.config.data.datasets[3].data.push({
+//           x: Date.now()+30,
+//           y: scannedSensorData.d
+//             }); 
+//         chart.config.data.datasets[4].data.push({
+//           x: Date.now()+40,
+//           y: scannedSensorData.e
+//             });
 
-     chart.config.data.datasets[5].data.push({
-			x: Date.now()+50,
-			y: scannedSensorData.f
-        });
-   chart.config.data.datasets[6].data.push({
-			x: Date.now()+60,
-			y: scannedSensorData.g
-        });
-        chart.config.data.datasets[7].data.push({
-			x: Date.now()+70,
-			y: scannedSensorData.h
-        }); 
-        chart.config.data.datasets[8].data.push({
-          x: Date.now()+80,
-          y: scannedSensorData.i
-            }); 
-        chart.config.data.datasets[9].data.push({
-          x: Date.now()+90,
-          y: scannedSensorData.j
-            });
+//      chart.config.data.datasets[5].data.push({
+// 			x: Date.now()+50,
+// 			y: scannedSensorData.f
+//         });
+//    chart.config.data.datasets[6].data.push({
+// 			x: Date.now()+60,
+// 			y: scannedSensorData.g
+//         });
+//         chart.config.data.datasets[7].data.push({
+// 			x: Date.now()+70,
+// 			y: scannedSensorData.h
+//         }); 
+//         chart.config.data.datasets[8].data.push({
+//           x: Date.now()+80,
+//           y: scannedSensorData.i
+//             }); 
+//         chart.config.data.datasets[9].data.push({
+//           x: Date.now()+90,
+//           y: scannedSensorData.j
+//             });
     
                  
-	chart.config.data.datasets[10].data.push({
-			x: Date.now()+100,
-			y: scannedSensorData.k
-        });
-   chart.config.data.datasets[11].data.push({
-			x: Date.now()+110,
-			y: scannedSensorData.l
-        });
-        chart.config.data.datasets[12].data.push({
-			x: Date.now()+120,
-			y: scannedSensorData.m
-        }); 
-        chart.config.data.datasets[13].data.push({
-          x: Date.now()+130,
-          y: scannedSensorData.n
-            }); 
-        chart.config.data.datasets[14].data.push({
-          x: Date.now()+140,
-          y: scannedSensorData.o
-            });
+// 	chart.config.data.datasets[10].data.push({
+// 			x: Date.now()+100,
+// 			y: scannedSensorData.k
+//         });
+//    chart.config.data.datasets[11].data.push({
+// 			x: Date.now()+110,
+// 			y: scannedSensorData.l
+//         });
+//         chart.config.data.datasets[12].data.push({
+// 			x: Date.now()+120,
+// 			y: scannedSensorData.m
+//         }); 
+//         chart.config.data.datasets[13].data.push({
+//           x: Date.now()+130,
+//           y: scannedSensorData.n
+//             }); 
+//         chart.config.data.datasets[14].data.push({
+//           x: Date.now()+140,
+//           y: scannedSensorData.o
+//             });
 
       
- chart.config.data.datasets[15].data.push({
-			x: Date.now()+150,
-			y: scannedSensorData.p
-        });
-   chart.config.data.datasets[16].data.push({
-			x: Date.now()+160,
-			y: scannedSensorData.q
-        });
-        chart.config.data.datasets[17].data.push({
-			x: Date.now()+170,
-			y: scannedSensorData.r
-        }); 
-        chart.config.data.datasets[18].data.push({
-          x: Date.now()+180,
-          y: scannedSensorData.s
-            }); 
-        chart.config.data.datasets[19].data.push({
-          x: Date.now()+190,
-          y: scannedSensorData.t
-            });
+//  chart.config.data.datasets[15].data.push({
+// 			x: Date.now()+150,
+// 			y: scannedSensorData.p
+//         });
+//    chart.config.data.datasets[16].data.push({
+// 			x: Date.now()+160,
+// 			y: scannedSensorData.q
+//         });
+//         chart.config.data.datasets[17].data.push({
+// 			x: Date.now()+170,
+// 			y: scannedSensorData.r
+//         }); 
+//         chart.config.data.datasets[18].data.push({
+//           x: Date.now()+180,
+//           y: scannedSensorData.s
+//             }); 
+//         chart.config.data.datasets[19].data.push({
+//           x: Date.now()+190,
+//           y: scannedSensorData.t
+//             });
 
-     chart.config.data.datasets[20].data.push({
-			x: Date.now()+200,
-			y: scannedSensorData.u
-        });
-   chart.config.data.datasets[21].data.push({
-			x: Date.now()+210,
-			y: scannedSensorData.v
-        });
+//      chart.config.data.datasets[20].data.push({
+// 			x: Date.now()+200,
+// 			y: scannedSensorData.u
+//         });
+//    chart.config.data.datasets[21].data.push({
+// 			x: Date.now()+210,
+// 			y: scannedSensorData.v
+//         });
        
 
+// }
+
+
+function onRefresh(chart) {
+  chart.config.data.datasets[0].data.push({
+    x: Date.now(),
+    y: scannedSensorData.p
+      });
+  chart.config.data.datasets[1].data.push({
+    x: Date.now(),
+    y: scannedSensorData.t
+      });
+      chart.config.data.datasets[2].data.push({
+    x: Date.now(),
+    y: scannedSensorData.als
+      }); 
+      chart.config.data.datasets[3].data.push({
+        x: Date.now(),
+        y: scannedSensorData.voc
+          }); 
+      chart.config.data.datasets[4].data.push({
+        x: Date.now(),
+        y: scannedSensorData.h
+          }); 
+          chart.config.data.datasets[5].data.push({
+            x: Date.now(),
+            y: scannedSensorData.pm25
+              });        
 }
 
-
 var config = {
-         markerType: "circle",  //"circle", "square", "cross", "none"
-        markerSize: 10,
 	type: 'line',
 	data: {
 		datasets: [ {
-			label: 'a',
+			label: 'Pressure',
 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
 			borderColor: chartColors.red,
 			fill: false,
-			showLine: false,
 			cubicInterpolationMode: 'monotone',
 			data: []
         },
         {
-			label: 'b',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-        {
-			label: 'c',
-			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-			borderColor: chartColors.yellow,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-    },
-    {
-			label: 'd',
-			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-			borderColor: chartColors.green,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-    {
-  			label: 'e',
+			label: 'Temperature',
 			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
 			borderColor: chartColors.blue,
 			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-
-
-{
-			label: 'f',
-			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-			borderColor: chartColors.purple,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-        },
-        {
-			label: 'g',
-			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-			borderColor: chartColors.grey,
-			fill: false,
-			showLine: false,
 			cubicInterpolationMode: 'monotone',
 			data: []
 		},
         {
-			label: 'h',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-    },
-    {
-			label: 'i',
+			label: 'Light',
 			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
 			borderColor: chartColors.orange,
 			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-    {
-  			label: 'j',
-			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-			borderColor: chartColors.yellow,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-
-{
-			label: 'k',
-			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-			borderColor: chartColors.green,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-        },
-        {
-			label: 'l',
-			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-			borderColor: chartColors.blue,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-        {
-			label: 'm',
-			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-			borderColor: chartColors.purple,
-			fill: false,
-			showLine: false,
 			cubicInterpolationMode: 'monotone',
 			data: []
     },
     {
-			label: 'n',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-    {
-  			label: 'o',
+			label: 'VOC',
 			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
 			borderColor: chartColors.grey,
 			fill: false,
-			showLine: false,
 			cubicInterpolationMode: 'monotone',
 			data: []
 		},
+    {
+  label: 'Humidity',
+  backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+  borderColor: chartColors.green,
+  fill: false,
+  cubicInterpolationMode: 'monotone',
+  data: []
+},
 {
-  			label: 'p',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-
-{
-			label: 'q',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-        },
-        {
-			label: 'r',
-			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-			borderColor: chartColors.yellow,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-        {
-			label: 's',
-			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-			borderColor: chartColors.green,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-    },
-    {
-			label: 't',
-			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-			borderColor: chartColors.blue,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-    {
-  			label: 'u',
-			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-			borderColor: chartColors.purple,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-    {
-  			label: 'v',
-			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-			borderColor: chartColors.grey,
-			fill: false,
-			showLine: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		}
-
-
-]
-        
+label: 'PM 2.5',
+backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+borderColor: chartColors.purple,
+fill: false,
+cubicInterpolationMode: 'monotone',
+data: []
+}]
 	},
 	options: {
-
-		legend: {
-        		display: false
-   			 },
 		title: {
 			display: true,
-			text: 'Heart Sounds- Realtime data'
+			text: 'Hibou - Realtime data'
     },
 
 		scales: {
@@ -370,8 +233,8 @@ var config = {
 				type: 'realtime',
 				realtime: {
 					duration: 20000,
-					refresh: 20,
-          delay: 20,
+					refresh: 2000,
+          delay: 2000,
           ttl:1000000,
 					onRefresh: onRefresh
         },
@@ -392,7 +255,6 @@ var config = {
           zoom: {
               // Boolean to enable zooming
               enabled: true,
-
               // Zooming directions. Remove the appropriate direction to disable 
               // Eg. 'y' would only allow zooming in the y direction
               mode: 'x',
@@ -400,11 +262,6 @@ var config = {
       }
   },
 		tooltips: {
-			   callbacks: {
-           label: function(tooltipItem) {
-                  return tooltipItem.yLabel;
-           }
-        },
 			mode: 'nearest',
 			intersect: false
 		},
@@ -414,6 +271,278 @@ var config = {
 		}
 	}
 };
+
+
+// var config = {
+//          markerType: "circle",  //"circle", "square", "cross", "none"
+//         markerSize: 10,
+// 	type: 'line',
+// 	data: {
+// 		datasets: [ {
+// 			label: 'a',
+// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.red,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//         },
+//         {
+// 			label: 'b',
+// 			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.orange,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//         {
+// 			label: 'c',
+// 			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.yellow,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//     },
+//     {
+// 			label: 'd',
+// 			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.green,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//     {
+//   			label: 'e',
+// 			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.blue,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+
+
+// {
+// 			label: 'f',
+// 			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.purple,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//         },
+//         {
+// 			label: 'g',
+// 			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.grey,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//         {
+// 			label: 'h',
+// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.red,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//     },
+//     {
+// 			label: 'i',
+// 			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.orange,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//     {
+//   			label: 'j',
+// 			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.yellow,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+
+// {
+// 			label: 'k',
+// 			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.green,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//         },
+//         {
+// 			label: 'l',
+// 			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.blue,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//         {
+// 			label: 'm',
+// 			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.purple,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//     },
+//     {
+// 			label: 'n',
+// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.red,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//     {
+//   			label: 'o',
+// 			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.grey,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+// {
+//   			label: 'p',
+// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.red,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+
+// {
+// 			label: 'q',
+// 			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.orange,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//         },
+//         {
+// 			label: 'r',
+// 			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.yellow,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//         {
+// 			label: 's',
+// 			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.green,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+//     },
+//     {
+// 			label: 't',
+// 			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.blue,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//     {
+//   			label: 'u',
+// 			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.purple,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		},
+//     {
+//   			label: 'v',
+// 			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+// 			borderColor: chartColors.grey,
+// 			fill: false,
+// 			showLine: false,
+// 			cubicInterpolationMode: 'monotone',
+// 			data: []
+// 		}
+// ]
+        
+// 	},
+// 	options: {
+
+// 		legend: {
+//         		display: false
+//    			 },
+// 		title: {
+// 			display: true,
+// 			text: 'Heart Sounds- Realtime data'
+//     },
+
+// 		scales: {
+// 			xAxes: [{
+// 				type: 'realtime',
+// 				realtime: {
+// 					duration: 20000,
+// 					refresh: 20,
+//           delay: 20,
+//           ttl:1000000,
+// 					onRefresh: onRefresh
+//         },
+//         gridLines: {
+//           display:false
+//       }
+// 			}],
+// 			yAxes: [{
+// 				scaleLabel: {
+// 					display: true,
+// 					labelString: 'value'
+//         }
+// 			}]
+//     },
+//     plugins: {
+//       zoom: {
+//             // Container for zoom options
+//           zoom: {
+//               // Boolean to enable zooming
+//               enabled: true,
+
+//               // Zooming directions. Remove the appropriate direction to disable 
+//               // Eg. 'y' would only allow zooming in the y direction
+//               mode: 'x',
+//           }
+//       }
+//   },
+// 		tooltips: {
+// 			   callbacks: {
+//            label: function(tooltipItem) {
+//                   return tooltipItem.yLabel;
+//            }
+//         },
+// 			mode: 'nearest',
+// 			intersect: false
+// 		},
+// 		hover: {
+// 			mode: 'nearest',
+// 			intersect: false
+// 		}
+// 	}
+// };
+
 var colorNames = Object.keys(chartColors);
 
 /**
@@ -560,8 +689,7 @@ function clickGetData() {
     writeCmd("ATA1");//Prevent print output
 
    writeCmd("AT+GAPCONNECT=[0]48:23:35:00:08:8E");  //[0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
-    
-
+   // [0]48:23:35:00:0B:79
 
 
 console.log('before');
@@ -574,7 +702,6 @@ setTimeout(function(){
 writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
   }, 5); // **********200, Waiting half a bit to make sure each command will get through separately.
  
-
   butGetData.textContent = "Stop Getting Data...";
   butScan.setAttribute("disabled", "true");
   log.classList.toggle("d-none", false);
@@ -582,7 +709,6 @@ writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT 
   isGettingData = true;
     var ctx = document.getElementById('myChart').getContext('2d');
   window.myChart = new Chart(ctx, config);
-  
 }
 
 /**
@@ -604,17 +730,15 @@ async function readLoop() {
         log.classList.toggle("d-none", false);
       }
       let lineValueArray = value.split(" ");
-      if (lineValueArray[6] === "(IFM-Fiber-7)") {
-	console.log("lineValueArray[1] is " + lineValueArray[1]);
-  	console.log("lineValueArray[2] is " + lineValueArray[2]);
-	console.log("lineValueArray[3] is " + lineValueArray[3]);
-  	console.log("lineValueArray[4] is " + lineValueArray[4]);
-	console.log("lineValueArray[5] is " + lineValueArray[5]);
-  	console.log("lineValueArray[6] is " + lineValueArray[6]);
-
+      if (lineValueArray[6] === "(IFM-Fiber-6)") {
+        console.log("lineValueArray[1] is " + lineValueArray[1]);
+        console.log("lineValueArray[2] is " + lineValueArray[2]);
+        console.log("lineValueArray[3] is " + lineValueArray[3]);
+        console.log("lineValueArray[4] is " + lineValueArray[4]);
+        console.log("lineValueArray[5] is " + lineValueArray[5]);
+        console.log("lineValueArray[6] is " + lineValueArray[6]);
         if(lineValueArray[2]) {
           hibouDevices.push("["+lineValueArray[2].replace("[1]", "") +"]");
-
         }
         log.textContent = "\n" + "hibouDevices found: " + hibouDevices.length + "\n";
       }
