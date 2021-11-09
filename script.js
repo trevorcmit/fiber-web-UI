@@ -20,6 +20,7 @@ var chartColors = {
 	purple: 'rgb(153, 102, 255)',
 	grey: 'rgb(96, 125, 139)'
 };
+
 var color = Chart.helpers.color;
 const log = document.getElementById("log");
 const butConnect = document.getElementById("butConnect");
@@ -33,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const notSupported = document.getElementById("notSupported");
   notSupported.classList.toggle("hidden", "serial" in navigator);
 });
-
 
 
 
@@ -147,85 +147,311 @@ function onRefresh(chart) {
   chart.config.data.datasets[0].data.push({
     x: Date.now(),
     y: scannedSensorData.p
-      });
+  });
   chart.config.data.datasets[1].data.push({
     x: Date.now(),
     y: scannedSensorData.t
-      });
-      chart.config.data.datasets[2].data.push({
+  });
+  chart.config.data.datasets[2].data.push({
     x: Date.now(),
     y: scannedSensorData.als
-      }); 
-      chart.config.data.datasets[3].data.push({
-        x: Date.now(),
-        y: scannedSensorData.voc
-          }); 
-      chart.config.data.datasets[4].data.push({
-        x: Date.now(),
-        y: scannedSensorData.h
-          }); 
-          chart.config.data.datasets[5].data.push({
-            x: Date.now(),
-            y: scannedSensorData.pm25
-              });        
+  }); 
+  chart.config.data.datasets[3].data.push({
+    x: Date.now(),
+    y: scannedSensorData.voc
+  }); 
+  chart.config.data.datasets[4].data.push({
+    x: Date.now(),
+    y: scannedSensorData.h
+  }); 
+  chart.config.data.datasets[5].data.push({
+    x: Date.now(),
+    y: scannedSensorData.pm25
+  });        
 }
 
+// var config = {
+// 	type: 'line',
+// 	data: {
+// 		datasets: [ 
+//       {
+//         label: 'Pressure',
+//         backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+//         borderColor: chartColors.red,
+//         fill: false,
+//         cubicInterpolationMode: 'monotone',
+//         data: []
+//       },
+//       {
+//         label: 'Temperature',
+//         backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+//         borderColor: chartColors.blue,
+//         fill: false,
+//         cubicInterpolationMode: 'monotone',
+//         data: []
+//       },
+//       {
+//         label: 'Light',
+//         backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+//         borderColor: chartColors.orange,
+//         fill: false,
+//         cubicInterpolationMode: 'monotone',
+//         data: []
+//       },
+//       {
+//         label: 'VOC',
+//         backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+//         borderColor: chartColors.grey,
+//         fill: false,
+//         cubicInterpolationMode: 'monotone',
+//         data: []
+//       },
+//       {
+//         label: 'Humidity',
+//         backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+//         borderColor: chartColors.green,
+//         fill: false,
+//         cubicInterpolationMode: 'monotone',
+//         data: []
+//       },
+//       {
+//         label: 'PM 2.5',
+//         backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+//         borderColor: chartColors.purple,
+//         fill: false,
+//         cubicInterpolationMode: 'monotone',
+//         data: []
+//       }
+//     ]
+//   },
+
+// 	options: {
+// 		title: {
+// 			display: true,
+// 			text: 'Hibou - Realtime data'
+//     },
+
+// 		scales: {
+// 			xAxes: [{
+// 				type: 'realtime',
+// 				realtime: {
+// 					duration: 20000,
+// 					refresh: 2000,
+//           delay: 2000,
+//           ttl:1000000,
+// 					onRefresh: onRefresh
+//         },
+//         gridLines: {
+//           display:false
+//         }
+// 			}],
+// 			yAxes: [{
+// 				scaleLabel: {
+// 					display: true,
+// 					labelString: 'value'
+//         }
+// 			}]
+//     },
+
+//     plugins: {
+//       zoom: {
+//           // Container for zoom options
+//         zoom: {
+//           // Boolean to enable zooming
+//           enabled: true,
+//           // Zooming directions. Remove the appropriate direction to disable 
+//           // Eg. 'y' would only allow zooming in the y direction
+//           mode: 'x',
+//         }
+//       }
+//     },
+
+// 		tooltips: {
+// 			mode: 'nearest',
+// 			intersect: false
+// 		},
+
+// 		hover: {
+// 			mode: 'nearest',
+// 			intersect: false
+// 		}
+// 	}
+// };
+
+
 var config = {
+  markerType: "circle",  //"circle", "square", "cross", "none"
+  markerSize: 10,
 	type: 'line',
 	data: {
-		datasets: [ {
-			label: 'Pressure',
+		datasets: [ 
+    {
+			label: 'a0',
 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
 			borderColor: chartColors.red,
-			fill: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-        },
-        {
-			label: 'Temperature',
-			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-			borderColor: chartColors.blue,
-			fill: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
-		},
-        {
-			label: 'Light',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
     },
     {
-			label: 'VOC',
-			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-			borderColor: chartColors.grey,
-			fill: false,
-			cubicInterpolationMode: 'monotone',
-			data: []
+			label: 'b0',
+			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+			borderColor: chartColors.orange,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
 		},
     {
-  label: 'Humidity',
-  backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-  borderColor: chartColors.green,
-  fill: false,
-  cubicInterpolationMode: 'monotone',
-  data: []
-},
-{
-label: 'PM 2.5',
-backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-borderColor: chartColors.purple,
-fill: false,
-cubicInterpolationMode: 'monotone',
-data: []
-}]
+			label: 'c0',
+			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+			borderColor: chartColors.yellow, 
+      fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+    },
+    {
+			label: 'd0',
+			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+			borderColor: chartColors.green,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'e0',
+			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+			borderColor: chartColors.blue,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+			label: 'f0',
+			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+			borderColor: chartColors.purple,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+    },
+    {
+			label: 'g0',
+			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+			borderColor: chartColors.grey,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+			label: 'h0',
+			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+			borderColor: chartColors.red,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+    },
+    {
+			label: 'i0',
+			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+			borderColor: chartColors.orange,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'j0',
+			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+			borderColor: chartColors.yellow,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+			label: 'k0',
+			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+			borderColor: chartColors.green,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+    },
+    {
+			label: 'l0',
+			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+			borderColor: chartColors.blue,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+			label: 'm0',
+			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+			borderColor: chartColors.purple,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+    },
+    {
+			label: 'n0',
+			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+			borderColor: chartColors.red,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'o0',
+			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+			borderColor: chartColors.grey,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'p0',
+			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+			borderColor: chartColors.red,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+			label: 'q0',
+			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+			borderColor: chartColors.orange,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+    },
+    {
+			label: 'r0',
+			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+			borderColor: chartColors.yellow,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+			label: 's0',
+			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+			borderColor: chartColors.green,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+    },
+    {
+			label: 't0',
+			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+			borderColor: chartColors.blue,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'u0',
+			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+			borderColor: chartColors.purple,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'v0',
+			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+			borderColor: chartColors.grey,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'w0',
+			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+			borderColor: chartColors.red,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'x0',
+			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+			borderColor: chartColors.orange,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'y0',
+			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+			borderColor: chartColors.yellow,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		},
+    {
+  		label: 'z0',
+			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+			borderColor: chartColors.green,
+			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+		}
+  ]
+        
 	},
 	options: {
+
+		legend: {
+        		display: false
+   			 },
 		title: {
 			display: true,
-			text: 'Hibou - Realtime data'
+			text: 'Heart Sounds- Realtime data'
     },
 
 		scales: {
@@ -233,8 +459,8 @@ data: []
 				type: 'realtime',
 				realtime: {
 					duration: 20000,
-					refresh: 2000,
-          delay: 2000,
+					refresh: 20,
+          delay: 20,
           ttl:1000000,
 					onRefresh: onRefresh
         },
@@ -255,6 +481,7 @@ data: []
           zoom: {
               // Boolean to enable zooming
               enabled: true,
+
               // Zooming directions. Remove the appropriate direction to disable 
               // Eg. 'y' would only allow zooming in the y direction
               mode: 'x',
@@ -262,6 +489,11 @@ data: []
       }
   },
 		tooltips: {
+			   callbacks: {
+           label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
+           }
+        },
 			mode: 'nearest',
 			intersect: false
 		},
@@ -271,277 +503,6 @@ data: []
 		}
 	}
 };
-
-
-// var config = {
-//          markerType: "circle",  //"circle", "square", "cross", "none"
-//         markerSize: 10,
-// 	type: 'line',
-// 	data: {
-// 		datasets: [ {
-// 			label: 'a',
-// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.red,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//         },
-//         {
-// 			label: 'b',
-// 			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.orange,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//         {
-// 			label: 'c',
-// 			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.yellow,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//     },
-//     {
-// 			label: 'd',
-// 			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.green,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//     {
-//   			label: 'e',
-// 			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.blue,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-
-
-// {
-// 			label: 'f',
-// 			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.purple,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//         },
-//         {
-// 			label: 'g',
-// 			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.grey,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//         {
-// 			label: 'h',
-// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.red,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//     },
-//     {
-// 			label: 'i',
-// 			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.orange,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//     {
-//   			label: 'j',
-// 			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.yellow,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-
-// {
-// 			label: 'k',
-// 			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.green,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//         },
-//         {
-// 			label: 'l',
-// 			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.blue,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//         {
-// 			label: 'm',
-// 			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.purple,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//     },
-//     {
-// 			label: 'n',
-// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.red,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//     {
-//   			label: 'o',
-// 			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.grey,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-// {
-//   			label: 'p',
-// 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.red,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-
-// {
-// 			label: 'q',
-// 			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.orange,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//         },
-//         {
-// 			label: 'r',
-// 			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.yellow,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//         {
-// 			label: 's',
-// 			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.green,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-//     },
-//     {
-// 			label: 't',
-// 			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.blue,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//     {
-//   			label: 'u',
-// 			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.purple,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		},
-//     {
-//   			label: 'v',
-// 			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-// 			borderColor: chartColors.grey,
-// 			fill: false,
-// 			showLine: false,
-// 			cubicInterpolationMode: 'monotone',
-// 			data: []
-// 		}
-// ]
-        
-// 	},
-// 	options: {
-
-// 		legend: {
-//         		display: false
-//    			 },
-// 		title: {
-// 			display: true,
-// 			text: 'Heart Sounds- Realtime data'
-//     },
-
-// 		scales: {
-// 			xAxes: [{
-// 				type: 'realtime',
-// 				realtime: {
-// 					duration: 20000,
-// 					refresh: 20,
-//           delay: 20,
-//           ttl:1000000,
-// 					onRefresh: onRefresh
-//         },
-//         gridLines: {
-//           display:false
-//       }
-// 			}],
-// 			yAxes: [{
-// 				scaleLabel: {
-// 					display: true,
-// 					labelString: 'value'
-//         }
-// 			}]
-//     },
-//     plugins: {
-//       zoom: {
-//             // Container for zoom options
-//           zoom: {
-//               // Boolean to enable zooming
-//               enabled: true,
-
-//               // Zooming directions. Remove the appropriate direction to disable 
-//               // Eg. 'y' would only allow zooming in the y direction
-//               mode: 'x',
-//           }
-//       }
-//   },
-// 		tooltips: {
-// 			   callbacks: {
-//            label: function(tooltipItem) {
-//                   return tooltipItem.yLabel;
-//            }
-//         },
-// 			mode: 'nearest',
-// 			intersect: false
-// 		},
-// 		hover: {
-// 			mode: 'nearest',
-// 			intersect: false
-// 		}
-// 	}
-// };
 
 var colorNames = Object.keys(chartColors);
 
@@ -577,22 +538,21 @@ async function connect() {
  * Closes the Web Serial connection.
  */
 async function disconnect() {
-  // Close the input stream (reader).
-  if (reader) {
+  if (reader) {             // Close the input stream (reader).
     await reader.cancel();
     await inputDone.catch(() => {});
     reader = null;
     inputDone = null;
   }
-  // Close the output stream.
+
   if (outputStream) {
-    await outputStream.getWriter().close();
+    await outputStream.getWriter().close(); // Close the output stream.
     await outputDone;
     outputStream = null;
     outputDone = null;
   }
-  // Close the port.
-  await port.close();
+
+  await port.close(); // Close the port.
   port = null;
   log.textContent = "Dongle Disconnected!";
 }
@@ -607,7 +567,6 @@ async function disconnect() {
 async function clickConnect() {
   log.textContent = "";
   if (port) {
-
     // If disconnected while scanning the dongle will restart
     if (isScanning) {
       writeCmd("\x03");
@@ -636,23 +595,28 @@ function getSelectedDevice(selectObject) {
  */
 function clickScan() {
   console.log("SCAN BUTTON PRESSED");
+
   if (isScanning) {
     writeCmd("\x03"); // Ctrl+C to stop the scan
-    setTimeout(() => {
-      writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
-    }, 500); // Waiting half a bit to make sure each command will get through separately.
+    setTimeout(
+      () => {
+        writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
+      }, 500
+    ); // Waiting half a bit to make sure each command will get through separately.
+
     isScanning = false;
     butGetData.removeAttribute("disabled");
     butScan.textContent = "Scan BLE Devices";
-    
     return;
   }
   hibouDevices = [];
   writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
   
-  setTimeout(() => {
-    writeCmd("AT+GAPSCAN=3");
-  }, 500); // Waiting half a bit to make sure each command will get through separately.
+  setTimeout(
+    () => {
+      writeCmd("AT+GAPSCAN=3");
+    }, 500
+  ); // Waiting half a bit to make sure each command will get through separately.
  
   butScan.textContent = "Stop Scanning...";
   butGetData.setAttribute("disabled", "true");
@@ -672,42 +636,41 @@ function clickScan() {
 function clickGetData() {
   console.log("GET DATA BUTTON PRESSED");
   if (isGettingData) {
-    //writeCmd("string"); // Ctrl+C to stop the scan//previos \x01
+    //writeCmd("string");        // Ctrl+C to stop the scan//previos \x01
     setTimeout(() => {
       writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
-    }, 500); // Waiting half a bit to make sure each command will get through separately.
+    }, 500);                     // Waiting half a bit to make sure each command will get through separately.
     isGettingData = false;
-    if(window.myChart){
+    if(window.myChart) {
       window.myChart.destroy();
     }
     butScan.removeAttribute("disabled");
     butGetData.textContent = "Get Data";
     return;
   }
-  writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
-  writeCmd("ATDS0"); // Prevent print output
-    writeCmd("ATA1");//Prevent print output
+  writeCmd("AT+CENTRAL");                          // Set the dongle in Central mode needed for scanning.
+  writeCmd("ATDS0");                               // Prevent print output
+  writeCmd("ATA1");                                //Prevent print output
+  writeCmd("AT+GAPCONNECT=[0]48:23:35:00:08:8E");  //[0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
+  // [0]48:23:35:00:0B:79
 
-   writeCmd("AT+GAPCONNECT=[0]48:23:35:00:08:8E");  //[0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
-   // [0]48:23:35:00:0B:79
-
-
-console.log('before');
-setTimeout(function(){
-    console.log('after');
-},500);
+  console.log('before');
+  setTimeout(
+    function() {
+      console.log('after');
+    }, 500
+  );
 
  setInterval(() => {
-
-writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
-  }, 5); // **********200, Waiting half a bit to make sure each command will get through separately.
+    writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
+  }, 5);         // **********200, Waiting half a bit to make sure each command will get through separately.
  
   butGetData.textContent = "Stop Getting Data...";
   butScan.setAttribute("disabled", "true");
   log.classList.toggle("d-none", false);
 
   isGettingData = true;
-    var ctx = document.getElementById('myChart').getContext('2d');
+  var ctx = document.getElementById('myChart').getContext('2d');
   window.myChart = new Chart(ctx, config);
 }
 
@@ -751,10 +714,10 @@ async function readLoop() {
           select.appendChild(option)
         });
       }
-
     }
+
     if (value && isGettingData) {
-      if(value === "SCAN COMPLETE") {
+      if (value === "SCAN COMPLETE") {
         isGettingData = false;
         butGetData.textContent = "Get Data";
         log.textContent += "\n" +"Scan Done" + "\n";
@@ -763,13 +726,12 @@ async function readLoop() {
       }
 
       let lineValueArray = value.split(" ");
-
 	    console.log("Second line: lineValueArray is " + lineValueArray);
 
-      if ( lineValueArray[1] ===   "received:") {
-       // console.log("Third line: lineValueArray[1] is" + lineValueArray[1]);
+      if (lineValueArray[1] === "received:") {
+      // console.log("Third line: lineValueArray[1] is" + lineValueArray[1]);
         let str = '';
-      	for (var counter = 2; counter < 23; counter++) {
+      	for (var counter = 2; counter < 93; counter++) {
  		      str += lineValueArray[counter];
    		    str += ',';
 		    }
@@ -780,6 +742,7 @@ async function readLoop() {
         //console.log("CONSOLE.LOG= "+value);
       }
     }
+
     if (done) {
       console.log("[readLoop] DONE", done);
       reader.releaseLock();
@@ -809,24 +772,17 @@ function writeCmd(cmd) {
  * TransformStream to parse the stream into lines.
  */
 class LineBreakTransformer {
-  constructor() {
-    // A container for holding stream data until a new line.
-    this.container = "";
-  }
+  constructor() {this.container = "";} // A container for holding stream data until a new line.
 
-  transform(chunk, controller) {
-    // Handle incoming chunk
+  transform(chunk, controller) {       // Handle incoming chunk
     this.container += chunk;
     const lines = this.container.split("\r\n");
     this.container = lines.pop();
     lines.forEach((line) => controller.enqueue(line));
   }
-
-  flush(controller) {
-    // Flush the stream.
-    controller.enqueue(this.container);
-  }
+  flush(controller) {controller.enqueue(this.container);} // Flush the stream.
 }
+
 
 /**
  * @name toggleUIConnected
@@ -845,186 +801,207 @@ function toggleUIConnected(connected) {
   butConnect.textContent = lbl;
 }
 
+
 /**
  * @name parseSensorData
  * Parse the data from advertising data string.
  * @param  {string} input advertising data string.
  * @returns {object ={sensorid:{string}, p:{int}, t:{int}, h:{int}, als:{int}, pm1:{int}, pm25:{int}, pm10:{int}}} 
  */
+function parseSensorData(input) {
+  let counter = 0;
+  const array = input.split(",");
+  console.log('array is' + array);
+  
+  let sensorData = {
+    sensorid: input[counter + 2] + input[counter + 3] ,
+    a0: array[0],
+    b0: array[1],
+    c0: array[2],
+    d0: array[3], 
+    e0: array[4],
+    f0: array[5],
+    g0: array[6],
+    h0: array[7],
+    i0: array[8],
+    j0: array[9],
+    k0: array[10],
+    l0: array[11],
+    m0: array[12],
+  	n0: array[13],
+ 	  o0: array[14],
+  	p0: array[15],
+    q0: array[16],
+    r0: array[17],
+  	s0: array[18],
+    t0: array[19],
+    u0: array[20],
+ 	  v0: array[21],
+    w0: array[22],
+    x0: array[23],
+    y0: array[24],
+    z0: array[25],
+
+    a1: array[26],
+    b1: array[27],
+    c1: array[28],
+    d1: array[29], 
+    e1: array[30],
+    f1: array[31],
+    g1: array[32],
+    h1: array[33],
+    i1: array[34],
+    j1: array[35],
+    k1: array[36],
+    l1: array[37],
+    m1: array[38],
+  	n1: array[39],
+ 	  o1: array[40],
+  	p1: array[41],
+    q1: array[42],
+    r1: array[43],
+  	s1: array[44],
+    t1: array[45],
+    u1: array[46],
+ 	  v1: array[47],
+    w1: array[48],
+    x1: array[49],
+    y1: array[50],
+    z1: array[51],
+
+    a2: array[52],
+    b2: array[53],
+    c2: array[54],
+    d2: array[55], 
+    e2: array[56],
+    f2: array[57],
+    g2: array[58],
+    h2: array[59],
+    i2: array[60],
+    j2: array[61],
+    k2: array[62],
+    l2: array[63],
+    m2: array[64],
+  	n2: array[65],
+ 	  o2: array[66],
+  	p2: array[67],
+    q2: array[68],
+    r2: array[69],
+  	s2: array[70],
+    t2: array[71],
+    u2: array[72],
+ 	  v2: array[73],
+    w2: array[74],
+    x2: array[75],
+    y2: array[76],
+    z2: array[77],
+
+    a3: array[78],
+    b3: array[79],
+    c3: array[80],
+    d3: array[81], 
+    e3: array[82],
+    f3: array[83],
+    g3: array[84],
+    h3: array[85],
+    i3: array[86],
+    j3: array[87],
+    k3: array[88],
+    l3: array[89],
+    m3: array[90],
+  	n3: array[91],
+ 	  o3: array[92],
+  	p3: array[93],
+    q3: array[94],
+    r3: array[95],
+  	s3: array[96],
+    t3: array[97],
+  }
+
+  return sensorData // Return string with the 98 data readings
+}
+
 
 // function parseSensorData(input) {
-//   let counter = 0;
-//   const array = input.split(",");
-//   console.log('array is' + array);
-  
+//   let counter = 13;
+//   if (input.includes("5B070503")) {
+//     counter = 17;
+//   }
 //   let sensorData = {
 //     sensorid:
+//       input[counter + 1] +
 //       input[counter + 2] +
-//       input[counter + 3] ,
-//     a:
-//       array[0],
-
-
-//       b:
-//       array[1],
-
-
-//    c:
-//        array[2],
-
-
-//   	d:
-//      array[3],
-
-//  	e:
-//       array[4],
-
-//  	f:
-//       array[5],
-
-
-//       g:
-//     array[6],
-
-
-//    h: 
-// 	array[7],
-
-//   	i:
-//       array[8],
-
-
-//  	j:
-//        array[9],
-
-//   k:
-//       array[10],
-
-
-//       l:
-//       array[11],
-
-
-//    m:
-//        array[12],
-
-
-//   	n:
-//      array[13],
-
-//  	o:
-//       array[14],
-
-//  	p:
-//       array[15],
-
-
-//       q:
-//     array[16],
-
-
-//    r: 
-// 	array[17],
-
-//   	s:
-//       array[18],
-
-
-//  	t:
-//        array[19],
-
-// 	u:
-//       array[20],
-
-
-//  	v:
-//        array[21],
-
-
-
-
-//   }
+//       input[counter + 3] +
+//       input[counter + 4] +
+//       input[counter + 5] +
+//       input[counter + 6],
+//     p:
+//       parseInt(
+//         input[counter + 13] +
+//           input[counter + 14] +
+//           input[counter + 11] +
+//           input[counter + 12],
+//         16
+//       ) / 10,
+//     t:
+//       parseInt(
+//         input[counter + 17] +
+//           input[counter + 18] +
+//           input[counter + 15] +
+//           input[counter + 16],
+//         16
+//       ) / 10,
+//     h:
+//       parseInt(
+//         input[counter + 21] +
+//           input[counter + 22] +
+//           input[counter + 19] +
+//           input[counter + 20],
+//         16
+//       ) / 10,
+//       voc:
+//       parseInt(
+//         input[counter + 25] +
+//           input[counter + 26] +
+//           input[counter + 23] +
+//           input[counter + 24],
+//         16
+//       ) / 10,
+//     als: parseInt(
+//       input[counter + 9] +
+//         input[counter + 10] +
+//         input[counter + 7] +
+//         input[counter + 8],
+//       16
+//     ),
+//     pm1:
+//       parseInt(
+//         input[counter + 29] +
+//           input[counter + 30] +
+//           input[counter + 27] +
+//           input[counter + 28],
+//         16
+//       ) / 10,
+//     pm25:
+//       parseInt(
+//         input[counter + 33] +
+//           input[counter + 34] +
+//           input[counter + 31] +
+//           input[counter + 32],
+//         16
+//       ) / 10,
+//     pm10:
+//       parseInt(
+//         input[counter + 37] +
+//           input[counter + 38] +
+//           input[counter + 35] +
+//           input[counter + 36],
+//         16
+//       ) / 10}
 //   return sensorData
 // }
 
-function parseSensorData(input) {
-  let counter = 13;
-  if (input.includes("5B070503")) {
-    counter = 17;
-  }
-  let sensorData = {
-    sensorid:
-      input[counter + 1] +
-      input[counter + 2] +
-      input[counter + 3] +
-      input[counter + 4] +
-      input[counter + 5] +
-      input[counter + 6],
-    p:
-      parseInt(
-        input[counter + 13] +
-          input[counter + 14] +
-          input[counter + 11] +
-          input[counter + 12],
-        16
-      ) / 10,
-    t:
-      parseInt(
-        input[counter + 17] +
-          input[counter + 18] +
-          input[counter + 15] +
-          input[counter + 16],
-        16
-      ) / 10,
-    h:
-      parseInt(
-        input[counter + 21] +
-          input[counter + 22] +
-          input[counter + 19] +
-          input[counter + 20],
-        16
-      ) / 10,
-      voc:
-      parseInt(
-        input[counter + 25] +
-          input[counter + 26] +
-          input[counter + 23] +
-          input[counter + 24],
-        16
-      ) / 10,
-    als: parseInt(
-      input[counter + 9] +
-        input[counter + 10] +
-        input[counter + 7] +
-        input[counter + 8],
-      16
-    ),
-    pm1:
-      parseInt(
-        input[counter + 29] +
-          input[counter + 30] +
-          input[counter + 27] +
-          input[counter + 28],
-        16
-      ) / 10,
-    pm25:
-      parseInt(
-        input[counter + 33] +
-          input[counter + 34] +
-          input[counter + 31] +
-          input[counter + 32],
-        16
-      ) / 10,
-    pm10:
-      parseInt(
-        input[counter + 37] +
-          input[counter + 38] +
-          input[counter + 35] +
-          input[counter + 36],
-        16
-      ) / 10}
-  return sensorData
-}
+
 
 function reversedNum(num) {
   return (
