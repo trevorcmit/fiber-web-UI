@@ -36,247 +36,66 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-
 function randomScalingFactor() {
 	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
 }
 
-// function onRefresh(chart) {
-//     chart.config.data.datasets[0].data.push({
-// 			x: Date.now(),
-// 			y: scannedSensorData[0]
-//         });
-//    chart.config.data.datasets[1].data.push({
-// 			x: Date.now()+10,
-// 			y: scannedSensorData.b
-//         });
-//         chart.config.data.datasets[2].data.push({
-// 			x: Date.now()+20,
-// 			y: scannedSensorData.c
-//         }); 
-//         chart.config.data.datasets[3].data.push({
-//           x: Date.now()+30,
-//           y: scannedSensorData.d
-//             }); 
-//         chart.config.data.datasets[4].data.push({
-//           x: Date.now()+40,
-//           y: scannedSensorData.e
-//             });
-
-//      chart.config.data.datasets[5].data.push({
-// 			x: Date.now()+50,
-// 			y: scannedSensorData.f
-//         });
-//    chart.config.data.datasets[6].data.push({
-// 			x: Date.now()+60,
-// 			y: scannedSensorData.g
-//         });
-//         chart.config.data.datasets[7].data.push({
-// 			x: Date.now()+70,
-// 			y: scannedSensorData.h
-//         }); 
-//         chart.config.data.datasets[8].data.push({
-//           x: Date.now()+80,
-//           y: scannedSensorData.i
-//             }); 
-//         chart.config.data.datasets[9].data.push({
-//           x: Date.now()+90,
-//           y: scannedSensorData.j
-//             });
-    
-                 
-// 	chart.config.data.datasets[10].data.push({
-// 			x: Date.now()+100,
-// 			y: scannedSensorData.k
-//         });
-//    chart.config.data.datasets[11].data.push({
-// 			x: Date.now()+110,
-// 			y: scannedSensorData.l
-//         });
-//         chart.config.data.datasets[12].data.push({
-// 			x: Date.now()+120,
-// 			y: scannedSensorData.m
-//         }); 
-//         chart.config.data.datasets[13].data.push({
-//           x: Date.now()+130,
-//           y: scannedSensorData.n
-//             }); 
-//         chart.config.data.datasets[14].data.push({
-//           x: Date.now()+140,
-//           y: scannedSensorData.o
-//             });
-
-      
-//  chart.config.data.datasets[15].data.push({
-// 			x: Date.now()+150,
-// 			y: scannedSensorData.p
-//         });
-//    chart.config.data.datasets[16].data.push({
-// 			x: Date.now()+160,
-// 			y: scannedSensorData.q
-//         });
-//         chart.config.data.datasets[17].data.push({
-// 			x: Date.now()+170,
-// 			y: scannedSensorData.r
-//         }); 
-//         chart.config.data.datasets[18].data.push({
-//           x: Date.now()+180,
-//           y: scannedSensorData.s
-//             }); 
-//         chart.config.data.datasets[19].data.push({
-//           x: Date.now()+190,
-//           y: scannedSensorData.t
-//             });
-
-//      chart.config.data.datasets[20].data.push({
-// 			x: Date.now()+200,
-// 			y: scannedSensorData.u
-//         });
-//    chart.config.data.datasets[21].data.push({
-// 			x: Date.now()+210,
-// 			y: scannedSensorData.v
-//         });
-       
-
-// }
-
 
 function onRefresh(chart) {
-  chart.config.data.datasets[0].data.push({
-    x: Date.now(),
-    y: scannedSensorData.p
-  });
-  chart.config.data.datasets[1].data.push({
-    x: Date.now(),
-    y: scannedSensorData.t
-  });
-  chart.config.data.datasets[2].data.push({
-    x: Date.now(),
-    y: scannedSensorData.als
-  }); 
-  chart.config.data.datasets[3].data.push({
-    x: Date.now(),
-    y: scannedSensorData.voc
-  }); 
-  chart.config.data.datasets[4].data.push({
-    x: Date.now(),
-    y: scannedSensorData.h
-  }); 
-  chart.config.data.datasets[5].data.push({
-    x: Date.now(),
-    y: scannedSensorData.pm25
-  });        
+  chart.config.data.datasets[0].data.push({x: Date.now(), y: scannedSensorData[0]});
+  chart.config.data.datasets[1].data.push({x: Date.now()+10, y: scannedSensorData.b0});
+  chart.config.data.datasets[2].data.push({x: Date.now()+20, y: scannedSensorData.c0}); 
+  chart.config.data.datasets[3].data.push({x: Date.now()+30, y: scannedSensorData.d0}); 
+  chart.config.data.datasets[4].data.push({x: Date.now()+40, y: scannedSensorData.e0});
+  chart.config.data.datasets[5].data.push({x: Date.now()+50, y: scannedSensorData.f0});
+  chart.config.data.datasets[6].data.push({x: Date.now()+60, y: scannedSensorData.g0});
+  chart.config.data.datasets[7].data.push({x: Date.now()+70, y: scannedSensorData.h0}); 
+  chart.config.data.datasets[8].data.push({x: Date.now()+80, y: scannedSensorData.i0}); 
+  chart.config.data.datasets[9].data.push({x: Date.now()+90, y: scannedSensorData.j0});    
+	chart.config.data.datasets[10].data.push({x: Date.now()+100, y: scannedSensorData.k0});
+  chart.config.data.datasets[11].data.push({x: Date.now()+110, y: scannedSensorData.l0});
+  chart.config.data.datasets[12].data.push({x: Date.now()+120, y: scannedSensorData.m0}); 
+  chart.config.data.datasets[13].data.push({x: Date.now()+130, y: scannedSensorData.n0}); 
+  chart.config.data.datasets[14].data.push({x: Date.now()+140, y: scannedSensorData.o0});
+  chart.config.data.datasets[15].data.push({x: Date.now()+150, y: scannedSensorData.p0});
+  chart.config.data.datasets[16].data.push({x: Date.now()+160, y: scannedSensorData.q0});
+  chart.config.data.datasets[17].data.push({x: Date.now()+170, y: scannedSensorData.r0}); 
+  chart.config.data.datasets[18].data.push({x: Date.now()+180, y: scannedSensorData.s0}); 
+  chart.config.data.datasets[19].data.push({x: Date.now()+190, y: scannedSensorData.t0});
+  chart.config.data.datasets[20].data.push({x: Date.now()+200, y: scannedSensorData.u0});
+  chart.config.data.datasets[21].data.push({x: Date.now()+210, y: scannedSensorData.v0});
+  chart.config.data.datasets[22].data.push({x: Date.now()+220, y: scannedSensorData.w0}); 
+  chart.config.data.datasets[23].data.push({x: Date.now()+230, y: scannedSensorData.x0});
+  chart.config.data.datasets[24].data.push({x: Date.now()+240, y: scannedSensorData.y0});
+  chart.config.data.datasets[25].data.push({x: Date.now()+250, y: scannedSensorData.z0});
+
+  chart.config.data.datasets[26].data.push({x: Date.now()+260, y: scannedSensorData.a1});
+  chart.config.data.datasets[27].data.push({x: Date.now()+270, y: scannedSensorData.b1});
+  chart.config.data.datasets[28].data.push({x: Date.now()+280, y: scannedSensorData.c1}); 
+  chart.config.data.datasets[29].data.push({x: Date.now()+290, y: scannedSensorData.d1}); 
+  chart.config.data.datasets[30].data.push({x: Date.now()+300, y: scannedSensorData.e1});
+  chart.config.data.datasets[31].data.push({x: Date.now()+310, y: scannedSensorData.f1});
+  chart.config.data.datasets[32].data.push({x: Date.now()+320, y: scannedSensorData.g1});
+  chart.config.data.datasets[33].data.push({x: Date.now()+330, y: scannedSensorData.h1}); 
+  chart.config.data.datasets[34].data.push({x: Date.now()+340, y: scannedSensorData.i1}); 
+  chart.config.data.datasets[35].data.push({x: Date.now()+350, y: scannedSensorData.j1});    
+	chart.config.data.datasets[36].data.push({x: Date.now()+360, y: scannedSensorData.k1});
+  chart.config.data.datasets[37].data.push({x: Date.now()+370, y: scannedSensorData.l1});
+  chart.config.data.datasets[38].data.push({x: Date.now()+380, y: scannedSensorData.m1}); 
+  chart.config.data.datasets[39].data.push({x: Date.now()+390, y: scannedSensorData.n1}); 
+  chart.config.data.datasets[40].data.push({x: Date.now()+400, y: scannedSensorData.o1});
+  chart.config.data.datasets[41].data.push({x: Date.now()+410, y: scannedSensorData.p1});
+  chart.config.data.datasets[42].data.push({x: Date.now()+420, y: scannedSensorData.q1});
+  chart.config.data.datasets[43].data.push({x: Date.now()+430, y: scannedSensorData.r1}); 
+  chart.config.data.datasets[44].data.push({x: Date.now()+440, y: scannedSensorData.s1}); 
+  chart.config.data.datasets[45].data.push({x: Date.now()+450, y: scannedSensorData.t1});
+  chart.config.data.datasets[46].data.push({x: Date.now()+460, y: scannedSensorData.u1});
+  chart.config.data.datasets[47].data.push({x: Date.now()+470, y: scannedSensorData.v1});
+  chart.config.data.datasets[48].data.push({x: Date.now()+480, y: scannedSensorData.w1}); 
+  chart.config.data.datasets[49].data.push({x: Date.now()+490, y: scannedSensorData.x1});
+  chart.config.data.datasets[50].data.push({x: Date.now()+500, y: scannedSensorData.y1});
+  chart.config.data.datasets[51].data.push({x: Date.now()+510, y: scannedSensorData.z1});
 }
-
-// var config = {
-// 	type: 'line',
-// 	data: {
-// 		datasets: [ 
-//       {
-//         label: 'Pressure',
-//         backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-//         borderColor: chartColors.red,
-//         fill: false,
-//         cubicInterpolationMode: 'monotone',
-//         data: []
-//       },
-//       {
-//         label: 'Temperature',
-//         backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-//         borderColor: chartColors.blue,
-//         fill: false,
-//         cubicInterpolationMode: 'monotone',
-//         data: []
-//       },
-//       {
-//         label: 'Light',
-//         backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-//         borderColor: chartColors.orange,
-//         fill: false,
-//         cubicInterpolationMode: 'monotone',
-//         data: []
-//       },
-//       {
-//         label: 'VOC',
-//         backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-//         borderColor: chartColors.grey,
-//         fill: false,
-//         cubicInterpolationMode: 'monotone',
-//         data: []
-//       },
-//       {
-//         label: 'Humidity',
-//         backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-//         borderColor: chartColors.green,
-//         fill: false,
-//         cubicInterpolationMode: 'monotone',
-//         data: []
-//       },
-//       {
-//         label: 'PM 2.5',
-//         backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-//         borderColor: chartColors.purple,
-//         fill: false,
-//         cubicInterpolationMode: 'monotone',
-//         data: []
-//       }
-//     ]
-//   },
-
-// 	options: {
-// 		title: {
-// 			display: true,
-// 			text: 'Hibou - Realtime data'
-//     },
-
-// 		scales: {
-// 			xAxes: [{
-// 				type: 'realtime',
-// 				realtime: {
-// 					duration: 20000,
-// 					refresh: 2000,
-//           delay: 2000,
-//           ttl:1000000,
-// 					onRefresh: onRefresh
-//         },
-//         gridLines: {
-//           display:false
-//         }
-// 			}],
-// 			yAxes: [{
-// 				scaleLabel: {
-// 					display: true,
-// 					labelString: 'value'
-//         }
-// 			}]
-//     },
-
-//     plugins: {
-//       zoom: {
-//           // Container for zoom options
-//         zoom: {
-//           // Boolean to enable zooming
-//           enabled: true,
-//           // Zooming directions. Remove the appropriate direction to disable 
-//           // Eg. 'y' would only allow zooming in the y direction
-//           mode: 'x',
-//         }
-//       }
-//     },
-
-// 		tooltips: {
-// 			mode: 'nearest',
-// 			intersect: false
-// 		},
-
-// 		hover: {
-// 			mode: 'nearest',
-// 			intersect: false
-// 		}
-// 	}
-// };
 
 
 var config = {
@@ -285,222 +104,635 @@ var config = {
 	type: 'line',
 	data: {
 		datasets: [ 
-    {
-			label: 'a0',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 'b0',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-			label: 'c0',
-			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-			borderColor: chartColors.yellow, 
-      fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 'd0',
-			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-			borderColor: chartColors.green,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'e0',
-			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-			borderColor: chartColors.blue,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-			label: 'f0',
-			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-			borderColor: chartColors.purple,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 'g0',
-			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-			borderColor: chartColors.grey,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-			label: 'h0',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 'i0',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'j0',
-			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-			borderColor: chartColors.yellow,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-			label: 'k0',
-			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-			borderColor: chartColors.green,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 'l0',
-			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-			borderColor: chartColors.blue,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-			label: 'm0',
-			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-			borderColor: chartColors.purple,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 'n0',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'o0',
-			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-			borderColor: chartColors.grey,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'p0',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-			label: 'q0',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 'r0',
-			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-			borderColor: chartColors.yellow,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-			label: 's0',
-			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-			borderColor: chartColors.green,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-    },
-    {
-			label: 't0',
-			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-			borderColor: chartColors.blue,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'u0',
-			backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
-			borderColor: chartColors.purple,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'v0',
-			backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
-			borderColor: chartColors.grey,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'w0',
-			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-			borderColor: chartColors.red,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'x0',
-			backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
-			borderColor: chartColors.orange,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'y0',
-			backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
-			borderColor: chartColors.yellow,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		},
-    {
-  		label: 'z0',
-			backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-			borderColor: chartColors.green,
-			fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
-		}
-  ]
-        
+      {
+        label: 'a0',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'b0',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'c0',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow, 
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'd0',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'e0',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'f0',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'g0',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'h0',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'i0',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'j0',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'k0',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'l0',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'm0',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'n0',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'o0',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'p0',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'q0',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'r0',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 's0',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 't0',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'u0',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'v0',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'w0',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'x0',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'y0',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'z0',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'a1',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'b1',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'c1',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow, 
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'd1',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'e1',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'f1',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'g1',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'h1',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'i1',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'j1',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'k1',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'l1',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'm1',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'n1',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'o1',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'p1',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'q1',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'r1',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 's1',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 't1',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'u1',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'v1',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'w1',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'x1',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'y1',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'z1',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'a2',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'b2',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'c2',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow, 
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'd2',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'e2',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'f2',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'g2',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'h2',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'i2',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'j2',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'k2',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'l2',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'm2',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'n2',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'o2',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'p2',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'q2',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'r2',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 's2',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 't2',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'u2',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'v2',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'w2',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'x2',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'y2',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'z2',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'a3',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'b3',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'c3',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow, 
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'd3',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'e3',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'f3',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'g3',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'h3',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'i3',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'j3',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'k3',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'l3',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'm3',
+        backgroundColor: color(chartColors.purple).alpha(0.5).rgbString(),
+        borderColor: chartColors.purple,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'n3',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'o3',
+        backgroundColor: color(chartColors.grey).alpha(0.5).rgbString(),
+        borderColor: chartColors.grey,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'p3',
+        backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+        borderColor: chartColors.red,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'q3',
+        backgroundColor: color(chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: chartColors.orange,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 'r3',
+        backgroundColor: color(chartColors.yellow).alpha(0.5).rgbString(),
+        borderColor: chartColors.yellow,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 's3',
+        backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
+        borderColor: chartColors.green,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+      {
+        label: 't3',
+        backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: chartColors.blue,
+        fill: false, showLine: false, cubicInterpolationMode: 'monotone', data: []
+      },
+  ``]   
 	},
-	options: {
 
+	options: {
 		legend: {
-        		display: false
-   			 },
+      display: false
+   	},
 		title: {
 			display: true,
 			text: 'Heart Sounds- Realtime data'
     },
-
 		scales: {
-			xAxes: [{
-				type: 'realtime',
-				realtime: {
-					duration: 20000,
-					refresh: 20,
-          delay: 20,
-          ttl:1000000,
-					onRefresh: onRefresh
-        },
-        gridLines: {
-          display:false
-      }
-			}],
-			yAxes: [{
-				scaleLabel: {
-					display: true,
-					labelString: 'value'
-        }
-			}]
+			xAxes: [
+        {
+          type: 'realtime',
+          realtime: {
+            duration: 20000,
+            refresh: 20,
+            delay: 20,
+            ttl:1000000,
+            onRefresh: onRefresh
+          },
+          gridLines: {display:false}
+			  }
+      ],
+			yAxes: [{scaleLabel: {display: true, labelString: 'value'}}]
     },
+
     plugins: {
       zoom: {
-            // Container for zoom options
-          zoom: {
-              // Boolean to enable zooming
-              enabled: true,
-
-              // Zooming directions. Remove the appropriate direction to disable 
-              // Eg. 'y' would only allow zooming in the y direction
-              mode: 'x',
-          }
+        zoom: {enabled: true, mode: 'x'} // Eg. 'y' would only allow zooming in the y direction
       }
-  },
+    },
+
 		tooltips: {
-			   callbacks: {
-           label: function(tooltipItem) {
-                  return tooltipItem.yLabel;
-           }
-        },
+			callbacks: {label: function(tooltipItem) {return tooltipItem.yLabel;}},
 			mode: 'nearest',
 			intersect: false
 		},
-		hover: {
-			mode: 'nearest',
-			intersect: false
-		}
+
+		hover: {mode: 'nearest', intersect: false}
 	}
 };
 
@@ -538,7 +770,7 @@ async function connect() {
  * Closes the Web Serial connection.
  */
 async function disconnect() {
-  if (reader) {             // Close the input stream (reader).
+  if (reader) {                 // Close the input stream (reader).
     await reader.cancel();
     await inputDone.catch(() => {});
     reader = null;
@@ -610,18 +842,11 @@ function clickScan() {
     return;
   }
   hibouDevices = [];
-  writeCmd("AT+CENTRAL"); // Set the dongle in Central mode needed for scanning.
-  
-  setTimeout(
-    () => {
-      writeCmd("AT+GAPSCAN=3");
-    }, 500
-  ); // Waiting half a bit to make sure each command will get through separately.
- 
+  writeCmd("AT+CENTRAL");                             // Set the dongle in Central mode needed for scanning.
+  setTimeout(() => {writeCmd("AT+GAPSCAN=3");}, 500); // Waiting half a bit to make sure each command gets through separately.
   butScan.textContent = "Stop Scanning...";
   butGetData.setAttribute("disabled", "true");
   log.classList.toggle("d-none", false);
-
   isScanning = true;
 }
 
@@ -641,9 +866,7 @@ function clickGetData() {
       writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
     }, 500);                     // Waiting half a bit to make sure each command will get through separately.
     isGettingData = false;
-    if(window.myChart) {
-      window.myChart.destroy();
-    }
+    if(window.myChart) {window.myChart.destroy();}
     butScan.removeAttribute("disabled");
     butGetData.textContent = "Get Data";
     return;
@@ -655,11 +878,7 @@ function clickGetData() {
   // [0]48:23:35:00:0B:79
 
   console.log('before');
-  setTimeout(
-    function() {
-      console.log('after');
-    }, 500
-  );
+  setTimeout(function() {console.log('after');}, 500);
 
  setInterval(() => {
     writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
@@ -681,9 +900,8 @@ function clickGetData() {
 async function readLoop() {
   while (true) {
     const { value, done } = await reader.read();
-    if (value && (!isScanning && !isGettingData)) {
-      log.textContent += value + "\n";
-    }
+    if (value && (!isScanning && !isGettingData)) {log.textContent += value + "\n";}
+
     if (value && isScanning) {
       if(value === "SCAN COMPLETE") {
         isScanning = false;
@@ -700,7 +918,7 @@ async function readLoop() {
         console.log("lineValueArray[4] is " + lineValueArray[4]);
         console.log("lineValueArray[5] is " + lineValueArray[5]);
         console.log("lineValueArray[6] is " + lineValueArray[6]);
-        if(lineValueArray[2]) {
+        if (lineValueArray[2]) {
           hibouDevices.push("["+lineValueArray[2].replace("[1]", "") +"]");
         }
         log.textContent = "\n" + "hibouDevices found: " + hibouDevices.length + "\n";
@@ -750,22 +968,21 @@ async function readLoop() {
     }
   }
 }
+
+
 /**
  * @name writeCmd
  * Gets a writer from the output stream and send the command to the Smart USB Dongle 2.0.
  * @param  {string} cmd command to send to the Smart USB Dongle 2.0
  */
 function writeCmd(cmd) {
-  const writer = outputStream.getWriter(); // Write to output stream
+  const writer = outputStream.getWriter();  // Write to output stream
   console.log("[SEND]", cmd);
-
-  writer.write(cmd);
-  // Ignores sending carriage return if sending Ctrl+C
-  if (cmd !== "\x03") {
-    writer.write("\r"); // Important to send a carriage return after a command
-  }
+  writer.write(cmd);                        // Ignores sending carriage return if sending Ctrl+C
+  if (cmd !== "\x03") {writer.write("\r");} // Important to send a carriage return after a command
   writer.releaseLock();
 }
+
 
 /**
  * @name LineBreakTransformer

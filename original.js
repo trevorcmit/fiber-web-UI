@@ -434,10 +434,7 @@ class LineBreakTransformer {
     lines.forEach((line) => controller.enqueue(line));
   }
 
-  flush(controller) {
-    // Flush the stream.
-    controller.enqueue(this.container);
-  }
+  flush(controller) {controller.enqueue(this.container);}
 }
 
 /**
