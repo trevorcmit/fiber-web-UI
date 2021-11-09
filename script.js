@@ -789,7 +789,7 @@ var colorNames = Object.keys(chartColors);
  */
 async function connect() {
   port = await navigator.serial.requestPort();   // - Request a port and open a connection.
-  await port.open({ baudRate: 115200 });         // - Wait for the port to open.
+  await port.open({baudRate: 115200});           // - Wait for the port to open.
   const encoder = new TextEncoderStream();
   outputDone = encoder.readable.pipeTo(port.writable);
   outputStream = encoder.writable;
@@ -908,8 +908,7 @@ function clickGetData() {
   writeCmd("AT+CENTRAL");                          // Set the dongle in Central mode needed for scanning.
   writeCmd("ATDS0");                               // Prevent print output
   writeCmd("ATA1");                                // Prevent print output
-  writeCmd("AT+GAPCONNECT=[0]48:23:35:00:08:8E");  // [0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
-  // [0]48:23:35:00:0B:79
+  writeCmd("AT+GAPCONNECT=[0]48:23:35:00:0B:79");  // [0]48:23:35:00:08:8E [0]48:23:35:00:00:E5 [0]48:23:35:00:0B:79
 
   console.log('before');
   setTimeout(function() {console.log('after');}, 500);
@@ -935,8 +934,9 @@ async function readLoop() {
   while (true) {
     const { value, done } = await reader.read();
     if (value && (!isScanning && !isGettingData)) {log.textContent += value + "\n";}
+
     if (value && isScanning) {
-      if(value === "SCAN COMPLETE") {
+      if(value === "SCAN COMPLETE") { // Same as original Javascript
         isScanning = false;
         butScan.textContent = "Scan BLE Devices";
         log.textContent += "\n" +"Scan Done" + "\n";
@@ -944,6 +944,7 @@ async function readLoop() {
         log.classList.toggle("d-none", false);
       }
       let lineValueArray = value.split(" ");
+
       if (lineValueArray[6] === "(IFM-Fiber-6)") {
         console.log("lineValueArray[1] is " + lineValueArray[1]);
         console.log("lineValueArray[2] is " + lineValueArray[2]);
@@ -977,14 +978,15 @@ async function readLoop() {
       }
       let lineValueArray = value.split(" ");
 	    console.log("Second line: lineValueArray is " + lineValueArray);
-      if (lineValueArray[1] === "received:") {
-        let str = '';
-      	for (var counter = 2; counter < 99; counter++) {
- 		      str += lineValueArray[counter];
-   	    	str += ',';
-		    }
-	      console.log("str is " + str);
-	      scannedSensorData = parseSensorData(str);
+
+      if (lineValueArray[1] === "received:") { // Commented part below is for strings
+        // let str = '';
+      	// for (var counter = 2; counter < 99; counter++) {
+ 		    //   str += lineValueArray[counter];
+   	    // 	str += ',';
+		    // }
+	      // console.log("str is " + str);                              // Slice from 6 since isScanning uses up to 6?
+	      scannedSensorData = parseSensorData(lineValueArray.slice(6)); // Original code uses [4] index for data
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
       }
     }
@@ -1166,9 +1168,8 @@ function toggleUIConnected(connected) {
 // }
 
 function parseSensorData(input) {
-
   let counter = 0;
-  var sensorData = {
+  var sensorData = { // value has 4 times it's index so the data is in order
     a0: 4*0,
     b0: 4*1,
     c0: 4*2,
@@ -1282,88 +1283,11 @@ function parseSensorData(input) {
       16
     );
   }
+
+  sensorData[sensorid] = input[counter + 2] + input[counter + 3]
+
   return sensorData;
 }
-
-
-// function parseSensorData(input) {
-//   let counter = 13;
-//   if (input.includes("5B070503")) {
-//     counter = 17;
-//   }
-//   let sensorData = {
-//     sensorid:
-//       input[counter + 1] +
-//       input[counter + 2] +
-//       input[counter + 3] +
-//       input[counter + 4] +
-//       input[counter + 5] +
-//       input[counter + 6],
-//     p:
-//       parseInt(
-//         input[counter + 13] +
-//           input[counter + 14] +
-//           input[counter + 11] +
-//           input[counter + 12],
-//         16
-//       ) / 10,
-//     t:
-//       parseInt(
-//         input[counter + 17] +
-//           input[counter + 18] +
-//           input[counter + 15] +
-//           input[counter + 16],
-//         16
-//       ) / 10,
-//     h:
-//       parseInt(
-//         input[counter + 21] +
-//           input[counter + 22] +
-//           input[counter + 19] +
-//           input[counter + 20],
-//         16
-//       ) / 10,
-//       voc:
-//       parseInt(
-//         input[counter + 25] +
-//           input[counter + 26] +
-//           input[counter + 23] +
-//           input[counter + 24],
-//         16
-//       ) / 10,
-//     als: parseInt(
-//       input[counter + 9] +
-//         input[counter + 10] +
-//         input[counter + 7] +
-//         input[counter + 8],
-//       16
-//     ),
-//     pm1:
-//       parseInt(
-//         input[counter + 29] +
-//           input[counter + 30] +
-//           input[counter + 27] +
-//           input[counter + 28],
-//         16
-//       ) / 10,
-//     pm25:
-//       parseInt(
-//         input[counter + 33] +
-//           input[counter + 34] +
-//           input[counter + 31] +
-//           input[counter + 32],
-//         16
-//       ) / 10,
-//     pm10:
-//       parseInt(
-//         input[counter + 37] +
-//           input[counter + 38] +
-//           input[counter + 35] +
-//           input[counter + 36],
-//         16
-//       ) / 10}
-//   return sensorData
-// }
 
 
 function reversedNum(num) {

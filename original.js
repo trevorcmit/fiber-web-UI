@@ -344,6 +344,7 @@ async function readLoop() {
     if (value && (!isScanning && !isGettingData)) {
       log.textContent += value + "\n";
     }
+    
     if (value && isScanning) {
       if(value === "SCAN COMPLETE") {
         isScanning = false;
