@@ -27,19 +27,17 @@ const butConnect = document.getElementById("butConnect");
 const butScan = document.getElementById("butScan");
 const butGetData = document.getElementById("butGetData");
 
-document.addEventListener("DOMContentLoaded", () => {
-  butScan.addEventListener("click", clickScan);
-  butGetData.addEventListener("click", clickGetData);
-  butConnect.addEventListener("click", clickConnect);
-  const notSupported = document.getElementById("notSupported");
-  notSupported.classList.toggle("hidden", "serial" in navigator);
-});
+document.addEventListener(
+  "DOMContentLoaded", () => {
+    butScan.addEventListener("click", clickScan);
+    butGetData.addEventListener("click", clickGetData);
+    butConnect.addEventListener("click", clickConnect);
+    const notSupported = document.getElementById("notSupported");
+    notSupported.classList.toggle("hidden", "serial" in navigator);
+  }
+);
 
-
-function randomScalingFactor() {
-	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
-}
-
+function randomScalingFactor() {return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);}
 
 function onRefresh(chart) {
   chart.config.data.datasets[0].data.push({x: Date.now(), y: scannedSensorData[0]});
@@ -95,6 +93,54 @@ function onRefresh(chart) {
   chart.config.data.datasets[49].data.push({x: Date.now()+490, y: scannedSensorData.x1});
   chart.config.data.datasets[50].data.push({x: Date.now()+500, y: scannedSensorData.y1});
   chart.config.data.datasets[51].data.push({x: Date.now()+510, y: scannedSensorData.z1});
+
+  chart.config.data.datasets[52].data.push({x: Date.now()+520, y: scannedSensorData.a2});
+  chart.config.data.datasets[53].data.push({x: Date.now()+530, y: scannedSensorData.b2});
+  chart.config.data.datasets[54].data.push({x: Date.now()+540, y: scannedSensorData.c2}); 
+  chart.config.data.datasets[55].data.push({x: Date.now()+550, y: scannedSensorData.d2}); 
+  chart.config.data.datasets[56].data.push({x: Date.now()+560, y: scannedSensorData.e2});
+  chart.config.data.datasets[57].data.push({x: Date.now()+570, y: scannedSensorData.f2});
+  chart.config.data.datasets[58].data.push({x: Date.now()+580, y: scannedSensorData.g2});
+  chart.config.data.datasets[59].data.push({x: Date.now()+590, y: scannedSensorData.h2}); 
+  chart.config.data.datasets[60].data.push({x: Date.now()+600, y: scannedSensorData.i2}); 
+  chart.config.data.datasets[61].data.push({x: Date.now()+610, y: scannedSensorData.j2});    
+	chart.config.data.datasets[62].data.push({x: Date.now()+620, y: scannedSensorData.k2});
+  chart.config.data.datasets[63].data.push({x: Date.now()+630, y: scannedSensorData.l2});
+  chart.config.data.datasets[64].data.push({x: Date.now()+640, y: scannedSensorData.m2}); 
+  chart.config.data.datasets[65].data.push({x: Date.now()+650, y: scannedSensorData.n2}); 
+  chart.config.data.datasets[66].data.push({x: Date.now()+660, y: scannedSensorData.o2});
+  chart.config.data.datasets[67].data.push({x: Date.now()+670, y: scannedSensorData.p2});
+  chart.config.data.datasets[68].data.push({x: Date.now()+680, y: scannedSensorData.q2});
+  chart.config.data.datasets[69].data.push({x: Date.now()+690, y: scannedSensorData.r2}); 
+  chart.config.data.datasets[70].data.push({x: Date.now()+700, y: scannedSensorData.s2}); 
+  chart.config.data.datasets[71].data.push({x: Date.now()+710, y: scannedSensorData.t2});
+  chart.config.data.datasets[72].data.push({x: Date.now()+720, y: scannedSensorData.u2});
+  chart.config.data.datasets[73].data.push({x: Date.now()+730, y: scannedSensorData.v2});
+  chart.config.data.datasets[74].data.push({x: Date.now()+740, y: scannedSensorData.w2}); 
+  chart.config.data.datasets[75].data.push({x: Date.now()+750, y: scannedSensorData.x2});
+  chart.config.data.datasets[76].data.push({x: Date.now()+760, y: scannedSensorData.y2});
+  chart.config.data.datasets[77].data.push({x: Date.now()+770, y: scannedSensorData.z2});
+
+  chart.config.data.datasets[78].data.push({x: Date.now()+780, y: scannedSensorData.a3});
+  chart.config.data.datasets[79].data.push({x: Date.now()+790, y: scannedSensorData.b3});
+  chart.config.data.datasets[80].data.push({x: Date.now()+800, y: scannedSensorData.c3}); 
+  chart.config.data.datasets[81].data.push({x: Date.now()+810, y: scannedSensorData.d3}); 
+  chart.config.data.datasets[82].data.push({x: Date.now()+820, y: scannedSensorData.e3});
+  chart.config.data.datasets[83].data.push({x: Date.now()+830, y: scannedSensorData.f3});
+  chart.config.data.datasets[84].data.push({x: Date.now()+840, y: scannedSensorData.g3});
+  chart.config.data.datasets[85].data.push({x: Date.now()+850, y: scannedSensorData.h3}); 
+  chart.config.data.datasets[86].data.push({x: Date.now()+860, y: scannedSensorData.i3}); 
+  chart.config.data.datasets[87].data.push({x: Date.now()+870, y: scannedSensorData.j3});    
+	chart.config.data.datasets[88].data.push({x: Date.now()+880, y: scannedSensorData.k3});
+  chart.config.data.datasets[89].data.push({x: Date.now()+890, y: scannedSensorData.l3});
+  chart.config.data.datasets[90].data.push({x: Date.now()+900, y: scannedSensorData.m3}); 
+  chart.config.data.datasets[91].data.push({x: Date.now()+910, y: scannedSensorData.n3}); 
+  chart.config.data.datasets[92].data.push({x: Date.now()+920, y: scannedSensorData.o3});
+  chart.config.data.datasets[93].data.push({x: Date.now()+930, y: scannedSensorData.p3});
+  chart.config.data.datasets[94].data.push({x: Date.now()+940, y: scannedSensorData.q3});
+  chart.config.data.datasets[95].data.push({x: Date.now()+950, y: scannedSensorData.r3}); 
+  chart.config.data.datasets[96].data.push({x: Date.now()+960, y: scannedSensorData.s3}); 
+  chart.config.data.datasets[97].data.push({x: Date.now()+970, y: scannedSensorData.t3});
 }
 
 
@@ -866,21 +912,21 @@ function clickGetData() {
       writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
     }, 500);                     // Waiting half a bit to make sure each command will get through separately.
     isGettingData = false;
-    if(window.myChart) {window.myChart.destroy();}
+    if (window.myChart) {window.myChart.destroy();}
     butScan.removeAttribute("disabled");
     butGetData.textContent = "Get Data";
     return;
   }
   writeCmd("AT+CENTRAL");                          // Set the dongle in Central mode needed for scanning.
   writeCmd("ATDS0");                               // Prevent print output
-  writeCmd("ATA1");                                //Prevent print output
-  writeCmd("AT+GAPCONNECT=[0]48:23:35:00:08:8E");  //[0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
+  writeCmd("ATA1");                                // Prevent print output
+  writeCmd("AT+GAPCONNECT=[0]48:23:35:00:08:8E");  // [0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
   // [0]48:23:35:00:0B:79
 
   console.log('before');
   setTimeout(function() {console.log('after');}, 500);
 
- setInterval(() => {
+  setInterval(() => {
     writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
   }, 5);         // **********200, Waiting half a bit to make sure each command will get through separately.
  
@@ -901,7 +947,6 @@ async function readLoop() {
   while (true) {
     const { value, done } = await reader.read();
     if (value && (!isScanning && !isGettingData)) {log.textContent += value + "\n";}
-
     if (value && isScanning) {
       if(value === "SCAN COMPLETE") {
         isScanning = false;
@@ -942,22 +987,17 @@ async function readLoop() {
         butScan.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
-
       let lineValueArray = value.split(" ");
 	    console.log("Second line: lineValueArray is " + lineValueArray);
-
       if (lineValueArray[1] === "received:") {
-      // console.log("Third line: lineValueArray[1] is" + lineValueArray[1]);
         let str = '';
-      	for (var counter = 2; counter < 93; counter++) {
+      	for (var counter = 2; counter < 99; counter++) {
  		      str += lineValueArray[counter];
-   		    str += ',';
+   	    	str += ',';
 		    }
 	      console.log("str is " + str);
 	      scannedSensorData = parseSensorData(str);
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
-
-        //console.log("CONSOLE.LOG= "+value);
       }
     }
 
