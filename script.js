@@ -788,21 +788,14 @@ var colorNames = Object.keys(chartColors);
  * @name connect
  */
 async function connect() {
-  // - Request a port and open a connection.
-  port = await navigator.serial.requestPort();
-  // - Wait for the port to open.
-  await port.open({ baudRate: 115200 });
-
+  port = await navigator.serial.requestPort();   // - Request a port and open a connection.
+  await port.open({ baudRate: 115200 });         // - Wait for the port to open.
   const encoder = new TextEncoderStream();
   outputDone = encoder.readable.pipeTo(port.writable);
   outputStream = encoder.writable;
-
   let decoder = new TextDecoderStream();
   inputDone = port.readable.pipeTo(decoder.writable);
-  inputStream = decoder.readable.pipeThrough(
-    new TransformStream(new LineBreakTransformer())
-  );
-
+  inputStream = decoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer()));
   reader = inputStream.getReader();
   readLoop().catch((error) => {
     toggleUIConnected(false);
@@ -816,21 +809,19 @@ async function connect() {
  * Closes the Web Serial connection.
  */
 async function disconnect() {
-  if (reader) {                 // Close the input stream (reader).
+  if (reader) {                              // Close the input stream (reader).
     await reader.cancel();
     await inputDone.catch(() => {});
     reader = null;
     inputDone = null;
   }
-
   if (outputStream) {
-    await outputStream.getWriter().close(); // Close the output stream.
+    await outputStream.getWriter().close();  // Close the output stream.
     await outputDone;
     outputStream = null;
     outputDone = null;
   }
-
-  await port.close(); // Close the port.
+  await port.close();                        // Close the port.
   port = null;
   log.textContent = "Dongle Disconnected!";
 }
@@ -844,8 +835,7 @@ async function disconnect() {
  */
 async function clickConnect() {
   log.textContent = "";
-  if (port) {
-    // If disconnected while scanning the dongle will restart
+  if (port) {                   // If disconnected while scanning the dongle will restart
     if (isScanning) {
       writeCmd("\x03");
       butScan.textContent = "Scan BLE Devices";
@@ -870,18 +860,17 @@ function getSelectedDevice(selectObject) {
  * Checks if a scan is already running by checking the boolean isScanning.
  * If isScanning = true: Stops scanning and goes back to peripheral mode, changes the button text and shows the beacon buttons. Finally sets isScanning = false.
  * If isScanning = false: Goes into Central mode and starts scanning for ble devices. Also changes button text and hides the beacon buttons. Finally sets isScanning = true.
- */
+*/
 function clickScan() {
   console.log("SCAN BUTTON PRESSED");
 
   if (isScanning) {
-    writeCmd("\x03"); // Ctrl+C to stop the scan
+    writeCmd("\x03");               // Ctrl+C to stop the scan
     setTimeout(
       () => {
-        writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
+        writeCmd("AT+PERIPHERAL");  // Set the dongle in Peripheral mode needed for advertising.
       }, 500
-    ); // Waiting half a bit to make sure each command will get through separately.
-
+    );                              // Waiting half a bit to make sure each command will get through separately.
     isScanning = false;
     butGetData.removeAttribute("disabled");
     butScan.textContent = "Scan BLE Devices";
@@ -907,10 +896,9 @@ function clickScan() {
 function clickGetData() {
   console.log("GET DATA BUTTON PRESSED");
   if (isGettingData) {
-    //writeCmd("string");        // Ctrl+C to stop the scan//previos \x01
     setTimeout(() => {
-      writeCmd("AT+PERIPHERAL"); // Set the dongle in Peripheral mode needed for advertising.
-    }, 500);                     // Waiting half a bit to make sure each command will get through separately.
+      writeCmd("AT+PERIPHERAL");                 // Set the dongle in Peripheral mode needed for advertising.
+    }, 500);                                     // Waiting half a bit to make sure each command will get through separately.
     isGettingData = false;
     if (window.myChart) {window.myChart.destroy();}
     butScan.removeAttribute("disabled");
@@ -927,8 +915,8 @@ function clickGetData() {
   setTimeout(function() {console.log('after');}, 500);
 
   setInterval(() => {
-    writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
-  }, 5);         // **********200, Waiting half a bit to make sure each command will get through separately.
+    writeCmd("AT+SETNOTI=001F"); // ******This is to connect with all of the GATT characteristics
+  }, 5);                         // ******200, Waiting half a bit to make sure each command will get through separately.
  
   butGetData.textContent = "Stop Getting Data...";
   butScan.setAttribute("disabled", "true");
@@ -1065,117 +1053,236 @@ function toggleUIConnected(connected) {
  * @param  {string} input advertising data string.
  * @returns {object ={sensorid:{string}, p:{int}, t:{int}, h:{int}, als:{int}, pm1:{int}, pm25:{int}, pm10:{int}}} 
  */
-function parseSensorData(input) {
-  let counter = 0;
-  const array = input.split(",");
-  console.log('array is' + array);
+// function parseSensorData(input) {
+//   let counter = 0;
+//   const array = input.split(",");
+//   console.log('array is' + array);
   
-  let sensorData = {
-    sensorid: input[counter + 2] + input[counter + 3] ,
-    a0: array[0],
-    b0: array[1],
-    c0: array[2],
-    d0: array[3], 
-    e0: array[4],
-    f0: array[5],
-    g0: array[6],
-    h0: array[7],
-    i0: array[8],
-    j0: array[9],
-    k0: array[10],
-    l0: array[11],
-    m0: array[12],
-  	n0: array[13],
- 	  o0: array[14],
-  	p0: array[15],
-    q0: array[16],
-    r0: array[17],
-  	s0: array[18],
-    t0: array[19],
-    u0: array[20],
- 	  v0: array[21],
-    w0: array[22],
-    x0: array[23],
-    y0: array[24],
-    z0: array[25],
+//   let sensorData = {
+//     sensorid: input[counter + 2] + input[counter + 3] ,
+//     a0: array[0],
+//     b0: array[1],
+//     c0: array[2],
+//     d0: array[3], 
+//     e0: array[4],
+//     f0: array[5],
+//     g0: array[6],
+//     h0: array[7],
+//     i0: array[8],
+//     j0: array[9],
+//     k0: array[10],
+//     l0: array[11],
+//     m0: array[12],
+//   	n0: array[13],
+//  	  o0: array[14],
+//   	p0: array[15],
+//     q0: array[16],
+//     r0: array[17],
+//   	s0: array[18],
+//     t0: array[19],
+//     u0: array[20],
+//  	  v0: array[21],
+//     w0: array[22],
+//     x0: array[23],
+//     y0: array[24],
+//     z0: array[25],
 
-    a1: array[26],
-    b1: array[27],
-    c1: array[28],
-    d1: array[29], 
-    e1: array[30],
-    f1: array[31],
-    g1: array[32],
-    h1: array[33],
-    i1: array[34],
-    j1: array[35],
-    k1: array[36],
-    l1: array[37],
-    m1: array[38],
-  	n1: array[39],
- 	  o1: array[40],
-  	p1: array[41],
-    q1: array[42],
-    r1: array[43],
-  	s1: array[44],
-    t1: array[45],
-    u1: array[46],
- 	  v1: array[47],
-    w1: array[48],
-    x1: array[49],
-    y1: array[50],
-    z1: array[51],
+//     a1: array[26],
+//     b1: array[27],
+//     c1: array[28],
+//     d1: array[29], 
+//     e1: array[30],
+//     f1: array[31],
+//     g1: array[32],
+//     h1: array[33],
+//     i1: array[34],
+//     j1: array[35],
+//     k1: array[36],
+//     l1: array[37],
+//     m1: array[38],
+//   	n1: array[39],
+//  	  o1: array[40],
+//   	p1: array[41],
+//     q1: array[42],
+//     r1: array[43],
+//   	s1: array[44],
+//     t1: array[45],
+//     u1: array[46],
+//  	  v1: array[47],
+//     w1: array[48],
+//     x1: array[49],
+//     y1: array[50],
+//     z1: array[51],
 
-    a2: array[52],
-    b2: array[53],
-    c2: array[54],
-    d2: array[55], 
-    e2: array[56],
-    f2: array[57],
-    g2: array[58],
-    h2: array[59],
-    i2: array[60],
-    j2: array[61],
-    k2: array[62],
-    l2: array[63],
-    m2: array[64],
-  	n2: array[65],
- 	  o2: array[66],
-  	p2: array[67],
-    q2: array[68],
-    r2: array[69],
-  	s2: array[70],
-    t2: array[71],
-    u2: array[72],
- 	  v2: array[73],
-    w2: array[74],
-    x2: array[75],
-    y2: array[76],
-    z2: array[77],
+//     a2: array[52],
+//     b2: array[53],
+//     c2: array[54],
+//     d2: array[55], 
+//     e2: array[56],
+//     f2: array[57],
+//     g2: array[58],
+//     h2: array[59],
+//     i2: array[60],
+//     j2: array[61],
+//     k2: array[62],
+//     l2: array[63],
+//     m2: array[64],
+//   	n2: array[65],
+//  	  o2: array[66],
+//   	p2: array[67],
+//     q2: array[68],
+//     r2: array[69],
+//   	s2: array[70],
+//     t2: array[71],
+//     u2: array[72],
+//  	  v2: array[73],
+//     w2: array[74],
+//     x2: array[75],
+//     y2: array[76],
+//     z2: array[77],
 
-    a3: array[78],
-    b3: array[79],
-    c3: array[80],
-    d3: array[81], 
-    e3: array[82],
-    f3: array[83],
-    g3: array[84],
-    h3: array[85],
-    i3: array[86],
-    j3: array[87],
-    k3: array[88],
-    l3: array[89],
-    m3: array[90],
-  	n3: array[91],
- 	  o3: array[92],
-  	p3: array[93],
-    q3: array[94],
-    r3: array[95],
-  	s3: array[96],
-    t3: array[97],
+//     a3: array[78],
+//     b3: array[79],
+//     c3: array[80],
+//     d3: array[81], 
+//     e3: array[82],
+//     f3: array[83],
+//     g3: array[84],
+//     h3: array[85],
+//     i3: array[86],
+//     j3: array[87],
+//     k3: array[88],
+//     l3: array[89],
+//     m3: array[90],
+//   	n3: array[91],
+//  	  o3: array[92],
+//   	p3: array[93],
+//     q3: array[94],
+//     r3: array[95],
+//   	s3: array[96],
+//     t3: array[97],
+//   }
+//   return sensorData // Return string with the 98 data readings
+// }
+
+function parseSensorData(input) {
+
+  let counter = 0;
+  var sensorData = {
+    a0: 4*0,
+    b0: 4*1,
+    c0: 4*2,
+    d0: 4*3, 
+    e0: 4*4,
+    f0: 4*5,
+    g0: 4*6,
+    h0: 4*7,
+    i0: 4*8,
+    j0: 4*9,
+    k0: 4*10,
+    l0: 4*11,
+    m0: 4*12,
+  	n0: 4*13,
+ 	  o0: 4*14,
+  	p0: 4*15,
+    q0: 4*16,
+    r0: 4*17,
+  	s0: 4*18,
+    t0: 4*19,
+    u0: 4*20,
+ 	  v0: 4*21,
+    w0: 4*22,
+    x0: 4*23,
+    y0: 4*24,
+    z0: 4*25,
+
+    a1: 4*26,
+    b1: 4*27,
+    c1: 4*28,
+    d1: 4*29, 
+    e1: 4*30,
+    f1: 4*31,
+    g1: 4*32,
+    h1: 4*33,
+    i1: 4*34,
+    j1: 4*35,
+    k1: 4*36,
+    l1: 4*37,
+    m1: 4*38,
+  	n1: 4*39,
+ 	  o1: 4*40,
+  	p1: 4*41,
+    q1: 4*42,
+    r1: 4*43,
+  	s1: 4*44,
+    t1: 4*45,
+    u1: 4*46,
+ 	  v1: 4*47,
+    w1: 4*48,
+    x1: 4*49,
+    y1: 4*50,
+    z1: 4*51,
+
+    a2: 4*52,
+    b2: 4*53,
+    c2: 4*54,
+    d2: 4*55, 
+    e2: 4*56,
+    f2: 4*57,
+    g2: 4*58,
+    h2: 4*59,
+    i2: 4*60,
+    j2: 4*61,
+    k2: 4*62,
+    l2: 4*63,
+    m2: 4*64,
+  	n2: 4*65,
+ 	  o2: 4*66,
+  	p2: 4*67,
+    q2: 4*68,
+    r2: 4*69,
+  	s2: 4*70,
+    t2: 4*71,
+    u2: 4*72,
+ 	  v2: 4*73,
+    w2: 4*74,
+    x2: 4*75,
+    y2: 4*76,
+    z2: 4*77,
+
+    a3: 4*78,
+    b3: 4*79,
+    c3: 4*80,
+    d3: 4*81, 
+    e3: 4*82,
+    f3: 4*83,
+    g3: 4*84,
+    h3: 4*85,
+    i3: 4*86,
+    j3: 4*87,
+    k3: 4*88,
+    l3: 4*89,
+    m3: 4*90,
+  	n3: 4*91,
+ 	  o3: 4*92,
+  	p3: 4*93,
+    q3: 4*94,
+    r3: 4*95,
+  	s3: 4*96,
+    t3: 4*97,
   }
 
-  return sensorData // Return string with the 98 data readings
+  for (var key in sensorData) {
+    let index = sensorData[key];
+    sensorData[key] = parseInt(
+      input[counter + index + 2] +
+      input[counter + index + 3] +
+      input[counter + index] +
+      input[counter + index + 1],
+      16
+    );
+  }
+  return sensorData;
 }
 
 
@@ -1259,7 +1366,6 @@ function parseSensorData(input) {
 // }
 
 
-
 function reversedNum(num) {
   return (
     parseFloat(
@@ -1272,6 +1378,15 @@ function reversedNum(num) {
   )                 
 }
 
+
+// a0:false, b0:false, c0:false, d0:false, e0:false, f0:false, g0:false, h0:false, i0:false, j0:false, k0:false, l0:false, m0:false,
+// n0:false, o0:false, p0:false, q0:false, r0:false, s0:false, t0:false, u0:false, v0:false, w0:false, x0:false, y0:false, z0:false,
+// a1:false, b1:false, c1:false, d1:false, e1:false, f1:false, g1:false, h1:false, i1:false, j1:false, k1:false, l1:false, m1:false,
+// n1:false, o1:false, p1:false, q1:false, r1:false, s1:false, t1:false, u1:false, v1:false, w1:false, x1:false, y1:false, z1:false,
+// a2:false, b2:false, c2:false, d2:false, e2:false, f2:false, g2:false, h2:false, i2:false, j2:false, k2:false, l2:false, m2:false,
+// n2:false, o2:false, p2:false, q2:false, r2:false, s2:false, t2:false, u2:false, v2:false, w2:false, x2:false, y2:false, z2:false,
+// a3:false, b3:false, c3:false, d3:false, e3:false, f3:false, g3:false, h3:false, i3:false, j3:false, k3:false, l3:false, m3:false,
+// n3:false, o3:false, p3:false, q3:false, r3:false, s3:false, t3:false
 
 // readLoop()
 //   .then((data) => { console.log(data)})

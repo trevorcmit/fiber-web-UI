@@ -381,13 +381,10 @@ async function readLoop() {
       
       let lineValueArray = value.split(" ");
         if (lineValueArray[0] ===   localStorage.getItem("selectedDevice") && lineValueArray[3] === "[ADV]:") {
-          //console.log("CONSOLE.LOG= "+value);
         
       // Second line contains the actual advdata string we need to parse
         scannedSensorData = parseSensorData(lineValueArray[4]);
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
-//console.log(scannedSensorData.p)
-        //console.log("CONSOLE.LOG= "+value);
       }
 
     }
