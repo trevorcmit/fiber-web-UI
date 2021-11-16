@@ -945,7 +945,7 @@ async function readLoop() {
       }
       let lineValueArray = value.split(" ");
 
-      if (lineValueArray[6] === "(IFM-Fiber-6)") {
+      if (lineValueArray[6] === "(IFM-Fiber-2)") {
         console.log("lineValueArray[1] is " + lineValueArray[1]);
         console.log("lineValueArray[2] is " + lineValueArray[2]);
         console.log("lineValueArray[3] is " + lineValueArray[3]);
@@ -976,19 +976,19 @@ async function readLoop() {
         butScan.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
-      let lineValueArray = value.split(" ");
-	    console.log("Second line: lineValueArray is " + lineValueArray);
 
-      if (lineValueArray[1] === "received:") { // Commented part below is for strings
-        // let str = '';
-      	// for (var counter = 2; counter < 99; counter++) {
- 		    //   str += lineValueArray[counter];
-   	    // 	str += ',';
-		    // }
-	      // console.log("str is " + str);                              // Slice from 6 since isScanning uses up to 6?
-	      scannedSensorData = parseSensorData(lineValueArray.slice(6)); // Original code uses [4] index for data
+      let lineValueArray = value.split(" ");
+
+      // if (lineValueArray[1] === "received:") { // Commented part below is for strings
+	    //   scannedSensorData = parseSensorData(lineValueArray.slice(6)); // Original code uses [4] index for data
+      //   log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
+      // }
+
+      if ( lineValueArray[0] ===   "Hex:") {
+        scannedSensorData = parseSensorData(lineValueArray[1]);
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
       }
+
     }
 
     if (done) {
@@ -1167,113 +1167,116 @@ function toggleUIConnected(connected) {
 //   return sensorData // Return string with the 98 data readings
 // }
 
+var sensors = { // value has 4 times it's index so the data is in order
+  a0: 4*0,
+  b0: 4*1,
+  c0: 4*2,
+  d0: 4*3, 
+  e0: 4*4,
+  f0: 4*5,
+  g0: 4*6,
+  h0: 4*7,
+  i0: 4*8,
+  j0: 4*9,
+  k0: 4*10,
+  l0: 4*11,
+  m0: 4*12,
+  n0: 4*13,
+   o0: 4*14,
+  p0: 4*15,
+  q0: 4*16,
+  r0: 4*17,
+  s0: 4*18,
+  t0: 4*19,
+  u0: 4*20,
+   v0: 4*21,
+  w0: 4*22,
+  x0: 4*23,
+  y0: 4*24,
+  z0: 4*25,
+
+  a1: 4*26,
+  b1: 4*27,
+  c1: 4*28,
+  d1: 4*29, 
+  e1: 4*30,
+  f1: 4*31,
+  g1: 4*32,
+  h1: 4*33,
+  i1: 4*34,
+  j1: 4*35,
+  k1: 4*36,
+  l1: 4*37,
+  m1: 4*38,
+  n1: 4*39,
+   o1: 4*40,
+  p1: 4*41,
+  q1: 4*42,
+  r1: 4*43,
+  s1: 4*44,
+  t1: 4*45,
+  u1: 4*46,
+   v1: 4*47,
+  w1: 4*48,
+  x1: 4*49,
+  y1: 4*50,
+  z1: 4*51,
+
+  a2: 4*52,
+  b2: 4*53,
+  c2: 4*54,
+  d2: 4*55, 
+  e2: 4*56,
+  f2: 4*57,
+  g2: 4*58,
+  h2: 4*59,
+  i2: 4*60,
+  j2: 4*61,
+  k2: 4*62,
+  l2: 4*63,
+  m2: 4*64,
+  n2: 4*65,
+   o2: 4*66,
+  p2: 4*67,
+  q2: 4*68,
+  r2: 4*69,
+  s2: 4*70,
+  t2: 4*71,
+  u2: 4*72,
+   v2: 4*73,
+  w2: 4*74,
+  x2: 4*75,
+  y2: 4*76,
+  z2: 4*77,
+
+  a3: 4*78,
+  b3: 4*79,
+  c3: 4*80,
+  d3: 4*81, 
+  e3: 4*82,
+  f3: 4*83,
+  g3: 4*84,
+  h3: 4*85,
+  i3: 4*86,
+  j3: 4*87,
+  k3: 4*88,
+  l3: 4*89,
+  m3: 4*90,
+  n3: 4*91,
+   o3: 4*92,
+  p3: 4*93,
+  q3: 4*94,
+  r3: 4*95,
+  s3: 4*96,
+  t3: 4*97,
+}
+
 function parseSensorData(input) {
-  let counter = 0;
-  var sensorData = { // value has 4 times it's index so the data is in order
-    a0: 4*0,
-    b0: 4*1,
-    c0: 4*2,
-    d0: 4*3, 
-    e0: 4*4,
-    f0: 4*5,
-    g0: 4*6,
-    h0: 4*7,
-    i0: 4*8,
-    j0: 4*9,
-    k0: 4*10,
-    l0: 4*11,
-    m0: 4*12,
-  	n0: 4*13,
- 	  o0: 4*14,
-  	p0: 4*15,
-    q0: 4*16,
-    r0: 4*17,
-  	s0: 4*18,
-    t0: 4*19,
-    u0: 4*20,
- 	  v0: 4*21,
-    w0: 4*22,
-    x0: 4*23,
-    y0: 4*24,
-    z0: 4*25,
+  let counter = 2;
 
-    a1: 4*26,
-    b1: 4*27,
-    c1: 4*28,
-    d1: 4*29, 
-    e1: 4*30,
-    f1: 4*31,
-    g1: 4*32,
-    h1: 4*33,
-    i1: 4*34,
-    j1: 4*35,
-    k1: 4*36,
-    l1: 4*37,
-    m1: 4*38,
-  	n1: 4*39,
- 	  o1: 4*40,
-  	p1: 4*41,
-    q1: 4*42,
-    r1: 4*43,
-  	s1: 4*44,
-    t1: 4*45,
-    u1: 4*46,
- 	  v1: 4*47,
-    w1: 4*48,
-    x1: 4*49,
-    y1: 4*50,
-    z1: 4*51,
+  let sensorData = {};
 
-    a2: 4*52,
-    b2: 4*53,
-    c2: 4*54,
-    d2: 4*55, 
-    e2: 4*56,
-    f2: 4*57,
-    g2: 4*58,
-    h2: 4*59,
-    i2: 4*60,
-    j2: 4*61,
-    k2: 4*62,
-    l2: 4*63,
-    m2: 4*64,
-  	n2: 4*65,
- 	  o2: 4*66,
-  	p2: 4*67,
-    q2: 4*68,
-    r2: 4*69,
-  	s2: 4*70,
-    t2: 4*71,
-    u2: 4*72,
- 	  v2: 4*73,
-    w2: 4*74,
-    x2: 4*75,
-    y2: 4*76,
-    z2: 4*77,
-
-    a3: 4*78,
-    b3: 4*79,
-    c3: 4*80,
-    d3: 4*81, 
-    e3: 4*82,
-    f3: 4*83,
-    g3: 4*84,
-    h3: 4*85,
-    i3: 4*86,
-    j3: 4*87,
-    k3: 4*88,
-    l3: 4*89,
-    m3: 4*90,
-  	n3: 4*91,
- 	  o3: 4*92,
-  	p3: 4*93,
-    q3: 4*94,
-    r3: 4*95,
-  	s3: 4*96,
-    t3: 4*97,
-  }
-
-  for (var key in sensorData) {
+  for (var key in sensors) {
     let index = sensorData[key];
     sensorData[key] = parseInt(
       input[counter + index + 2] +
@@ -1285,7 +1288,6 @@ function parseSensorData(input) {
   }
 
   sensorData[sensorid] = input[counter + 2] + input[counter + 3]
-
   return sensorData;
 }
 
