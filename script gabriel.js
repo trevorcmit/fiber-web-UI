@@ -34,11 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   notSupported.classList.toggle("hidden", "serial" in navigator);
 });
 
-
-
-
-
-
 function randomScalingFactor() {
 	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
 }
@@ -137,8 +132,8 @@ function onRefresh(chart) {
 
 
 var config = {
-         markerType: "circle",  //"circle", "square", "cross", "none"
-        markerSize: 10,
+  markerType: "circle",  //"circle", "square", "cross", "none"
+  markerSize: 10,
 	type: 'line',
 	data: {
 		datasets: [ {
@@ -545,31 +540,21 @@ function clickGetData() {
 
    writeCmd("AT+GAPCONNECT=[0]48:23:35:00:0B:79");  //[0]48:23:35:00:08:8E //[0]48:23:35:00:00:E5
     
+  console.log('before');
+  setTimeout(function() {
+      console.log('after');
+  }, 500);
 
-
-
-console.log('before');
-setTimeout(function(){
-    console.log('after');
-},500);
-
- setInterval(() => {
-
-writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
+  setInterval(() => {
+    writeCmd("AT+SETNOTI=001F"); // ********This is to connect with all of the GATT characteristics
   }, 50); // **********200, Waiting half a bit to make sure each command will get through separately.
- 
-
-
-
-
-
  
   butGetData.textContent = "Stop Getting Data...";
   butScan.setAttribute("disabled", "true");
   log.classList.toggle("d-none", false);
 
   isGettingData = true;
-    var ctx = document.getElementById('myChart').getContext('2d');
+  var ctx = document.getElementById('myChart').getContext('2d');
   window.myChart = new Chart(ctx, config);
   
 }
@@ -618,10 +603,10 @@ async function readLoop() {
 
     }
     if (value && isGettingData) {
-      if(value === "SCAN COMPLETE") {
+      if (value === "SCAN COMPLETE") {
         isGettingData = false;
         butGetData.textContent = "Get Data";
-        log.textContent += "\n" +"Scan Done" + "\n";
+        log.textContent += "\n" + "Scan Done" + "\n";
         butScan.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
@@ -859,7 +844,6 @@ function parseSensorData(input) {
         16
       ),
 
-
    m:
         parseInt(
         input[counter + 52] +
@@ -868,7 +852,6 @@ function parseSensorData(input) {
           input[counter + 51],
         16
       ),
-
 
   	n:
       parseInt(
@@ -907,7 +890,6 @@ function parseSensorData(input) {
         16
       ),
 
-
    r: 
 	 parseInt(
         input[counter + 72] +
@@ -926,7 +908,6 @@ function parseSensorData(input) {
         16
       ),
 
-
  	t:
        parseInt(
         input[counter + 80] +
@@ -935,14 +916,6 @@ function parseSensorData(input) {
           input[counter + 79],
         16
       ),
-
-
-
-
-
-
-
-
   }
   return sensorData
 }
@@ -958,8 +931,6 @@ function reversedNum(num) {
     ) * Math.sign(num)
   )                 
 }
-
-
 
 // readLoop()
 //   .then((data) => { console.log(data)})
