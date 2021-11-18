@@ -565,11 +565,11 @@ function clickGetData() {
  */
 async function readLoop() {
   while (true) {
-    const { value, done } = await reader.read();
+    const {value, done} = await reader.read();
     if (value && (!isScanning && !isGettingData)) {log.textContent += value + "\n";}
     
     if (value && isScanning) {
-      if(value === "SCAN COMPLETE") {
+      if (value === "SCAN COMPLETE") {
         isScanning = false;
         butScan.textContent = "Scan BLE Devices";
         log.textContent += "\n" +"Scan Done" + "\n";
@@ -578,20 +578,20 @@ async function readLoop() {
       }
       let lineValueArray = value.split(" ");
       if (lineValueArray[6] === "(IFM-Fiber-2)") {
-	console.log("lineValueArray[1] is " + lineValueArray[1]);
-  	console.log("lineValueArray[2] is " + lineValueArray[2]);
-	console.log("lineValueArray[3] is " + lineValueArray[3]);
-  	console.log("lineValueArray[4] is " + lineValueArray[4]);
-	console.log("lineValueArray[5] is " + lineValueArray[5]);
-  	console.log("lineValueArray[6] is " + lineValueArray[6]);
+        console.log("lineValueArray[1] is " + lineValueArray[1]);
+        console.log("lineValueArray[2] is " + lineValueArray[2]);
+        console.log("lineValueArray[3] is " + lineValueArray[3]);
+        console.log("lineValueArray[4] is " + lineValueArray[4]);
+        console.log("lineValueArray[5] is " + lineValueArray[5]);
+        console.log("lineValueArray[6] is " + lineValueArray[6]);
 
-        if(lineValueArray[2]) {
+        if (lineValueArray[2]) {
           hibouDevices.push("["+lineValueArray[2].replace("[1]", "") +"]");
-
         }
         log.textContent = "\n" + "hibouDevices found: " + hibouDevices.length + "\n";
       }
-      if(value === "SCAN COMPLETE") {
+
+      if (value === "SCAN COMPLETE") {
         var select = document.getElementById("devices");
         hibouDevices.map(function(item){
           var option = document.createElement("option");
@@ -600,7 +600,6 @@ async function readLoop() {
           select.appendChild(option)
         });
       }
-
     }
     if (value && isGettingData) {
       if (value === "SCAN COMPLETE") {
@@ -610,41 +609,11 @@ async function readLoop() {
         butScan.removeAttribute("disabled");
         log.classList.toggle("d-none", false);
       }
-     
-
+    
       let lineValueArray = value.split(" ");
-
-
-	 //console.log("Second line: Value is " + value);
-	 //console.log("Second line: lineValueArray is " + lineValueArray);
-         // console.log("Second line: lineValueArray[0] is " + lineValueArray[0]);
-	  //console.log("Second line: lineValueArray[1] is " + lineValueArray[1]);
-  	 // console.log("Second line: lineValueArray[2] is " + lineValueArray[2]);
-	  //console.log("Second line: lineValueArray[3] is " + lineValueArray[3]);
-  	  // console.log("Second line: lsineValueArray[4] is " + lineValueArray[4]);
-	   // console.log("Second line: lineValueArray[5] is " + lineValueArray[5]);
-  	   // console.log("Second line: lineValueArray[6] is " + lineValueArray[6]);
-	 
-
-       //console.log(" localStorage " +  localStorage.getItem("selectedDevice"));
-
-	
-
-       if ( lineValueArray[0] ===   "Hex:") {
-         
-       // console.log("Third line: lineValueArray[1] is" + lineValueArray[1]);
-         //let str = '';
-      	//for (var counter = 2; counter < 26; counter++) {
- 	//	str += lineValueArray[counter];
-   	//	str += ',';
-	//	}
-	// console.log("str is " + str);
-	 scannedSensorData = parseSensorData(lineValueArray[1]);
-
+      if ( lineValueArray[0] ===   "Hex:") {
+	      scannedSensorData = parseSensorData(lineValueArray[1]);
         log.textContent = "\n" + "SensorData= " + JSON.stringify(scannedSensorData) + "\n";
-	
-
-        //console.log("CONSOLE.LOG= "+value);
       }
 
     }

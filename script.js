@@ -75,8 +75,8 @@ function onRefresh(chart) {
   chart.config.data.datasets[31].data.push({x: Date.now()+310, y: scannedSensorData.f1});
   chart.config.data.datasets[32].data.push({x: Date.now()+320, y: scannedSensorData.g1});
   chart.config.data.datasets[33].data.push({x: Date.now()+330, y: scannedSensorData.h1}); 
-  chart.config.data.datasets[34].data.push({x: Date.now()+340, y: scannedSensorData.i1}); 
-  chart.config.data.datasets[35].data.push({x: Date.now()+350, y: scannedSensorData.j1});    
+  chart.config.data.datasets[34].data.push({x: Date.now()+340, y: scannedSensorData.i1});
+  chart.config.data.datasets[35].data.push({x: Date.now()+350, y: scannedSensorData.j1});
 	chart.config.data.datasets[36].data.push({x: Date.now()+360, y: scannedSensorData.k1});
   chart.config.data.datasets[37].data.push({x: Date.now()+370, y: scannedSensorData.l1});
   chart.config.data.datasets[38].data.push({x: Date.now()+380, y: scannedSensorData.m1}); 
@@ -89,7 +89,7 @@ function onRefresh(chart) {
   chart.config.data.datasets[45].data.push({x: Date.now()+450, y: scannedSensorData.t1});
   chart.config.data.datasets[46].data.push({x: Date.now()+460, y: scannedSensorData.u1});
   chart.config.data.datasets[47].data.push({x: Date.now()+470, y: scannedSensorData.v1});
-  chart.config.data.datasets[48].data.push({x: Date.now()+480, y: scannedSensorData.w1}); 
+  chart.config.data.datasets[48].data.push({x: Date.now()+480, y: scannedSensorData.w1});
   chart.config.data.datasets[49].data.push({x: Date.now()+490, y: scannedSensorData.x1});
   chart.config.data.datasets[50].data.push({x: Date.now()+500, y: scannedSensorData.y1});
   chart.config.data.datasets[51].data.push({x: Date.now()+510, y: scannedSensorData.z1});
@@ -102,7 +102,7 @@ function onRefresh(chart) {
   // chart.config.data.datasets[58].data.push({x: Date.now()+580, y: scannedSensorData.g2});
   // chart.config.data.datasets[59].data.push({x: Date.now()+590, y: scannedSensorData.h2}); 
   // chart.config.data.datasets[60].data.push({x: Date.now()+600, y: scannedSensorData.i2}); 
-  // chart.config.data.datasets[61].data.push({x: Date.now()+610, y: scannedSensorData.j2});    
+  // chart.config.data.datasets[61].data.push({x: Date.now()+610, y: scannedSensorData.j2});
 	// chart.config.data.datasets[62].data.push({x: Date.now()+620, y: scannedSensorData.k2});
   // chart.config.data.datasets[63].data.push({x: Date.now()+630, y: scannedSensorData.l2});
   // chart.config.data.datasets[64].data.push({x: Date.now()+640, y: scannedSensorData.m2}); 
@@ -128,7 +128,7 @@ function onRefresh(chart) {
   // chart.config.data.datasets[84].data.push({x: Date.now()+840, y: scannedSensorData.g3});
   // chart.config.data.datasets[85].data.push({x: Date.now()+850, y: scannedSensorData.h3}); 
   // chart.config.data.datasets[86].data.push({x: Date.now()+860, y: scannedSensorData.i3}); 
-  // chart.config.data.datasets[87].data.push({x: Date.now()+870, y: scannedSensorData.j3});    
+  // chart.config.data.datasets[87].data.push({x: Date.now()+870, y: scannedSensorData.j3});
 	// chart.config.data.datasets[88].data.push({x: Date.now()+880, y: scannedSensorData.k3});
   // chart.config.data.datasets[89].data.push({x: Date.now()+890, y: scannedSensorData.l3});
   // chart.config.data.datasets[90].data.push({x: Date.now()+900, y: scannedSensorData.m3}); 
@@ -137,7 +137,7 @@ function onRefresh(chart) {
   // chart.config.data.datasets[93].data.push({x: Date.now()+930, y: scannedSensorData.p3});
   // chart.config.data.datasets[94].data.push({x: Date.now()+940, y: scannedSensorData.q3});
   // chart.config.data.datasets[95].data.push({x: Date.now()+950, y: scannedSensorData.r3}); 
-  // chart.config.data.datasets[96].data.push({x: Date.now()+960, y: scannedSensorData.s3}); 
+  // chart.config.data.datasets[96].data.push({x: Date.now()+960, y: scannedSensorData.s3});
   // chart.config.data.datasets[97].data.push({x: Date.now()+970, y: scannedSensorData.t3});
 }
 
@@ -1211,22 +1211,22 @@ function parseSensorData(input) {
     ),
 
     a1: parseInt(
-      input[counter + 4 + 104] +
-      input[counter + 5 + 104] +
+      input[counter + 108] +
+      input[counter + 109] +
       input[counter + 2 + 104] +
       input[counter + 3 + 104], 16
     ),
     b1: parseInt(
-      input[counter + 8 + 104] +
+      input[counter + 112] +
       input[counter + 9 + 104] +
       input[counter + 6 + 104] +
       input[counter + 7 + 104], 16
     ),
     c1: parseInt(
-      input[counter + 12 + 104] +
-      input[counter + 13 + 104] +
-      input[counter + 10 + 104] +
-      input[counter + 11 + 104], 16
+      input[counter + 116] +
+      input[counter + 117] +
+      input[counter + 114] +
+      input[counter + 115], 16
     ),
   	d1: parseInt(
       input[counter + 16 + 104] +
@@ -1255,14 +1255,14 @@ function parseSensorData(input) {
     h1: parseInt(
       input[counter + 32 + 104] +
       input[counter + 33 + 104] +
-      input[counter + 30 + 104] +
-      input[counter + 31 + 104], 16
+      input[counter + 134] +
+      input[counter + 135], 16
     ),
   	i1: parseInt(
-      input[counter + 36 + 104] +
-      input[counter + 37 + 104] +
+      input[counter + 140] +
+      input[counter + 141] +
       input[counter + 34 + 104] +
-      input[counter + 35 + 104], 16
+      input[counter + 139], 16
     ),
  	  j1: parseInt(
       input[counter + 40 + 104] +
@@ -1290,15 +1290,15 @@ function parseSensorData(input) {
     ),
   	n1: parseInt(
       input[counter + 56 + 104] +
-      input[counter + 57 + 104] +
+      input[counter + 161] +
       input[counter + 54 + 104] +
       input[counter + 55 + 104], 16
     ),
  	  o1: parseInt(
       input[counter + 60 + 104] +
       input[counter + 61 + 104] +
-      input[counter + 58 + 104] +
-      input[counter + 59 + 104], 16
+      input[counter + 162] +
+      input[counter + 163], 16
     ),
   	p1: parseInt(
       input[counter + 64 + 104] +
@@ -1325,10 +1325,10 @@ function parseSensorData(input) {
       input[counter + 75 + 104], 16
     ),
  	  t1: parseInt(
-      input[counter + 80 + 104] +
-      input[counter + 81 + 104] +
-      input[counter + 78 + 104] +
-      input[counter + 79 + 104], 16
+      input[counter + 184] +
+      input[counter + 185] +
+      input[counter + 182] +
+      input[counter + 183], 16
     ),
     u1: parseInt(
       input[counter + 84 + 104] +
@@ -1337,13 +1337,13 @@ function parseSensorData(input) {
       input[counter + 83 + 104], 16
     ),
     v1: parseInt(
-      input[counter + 88 + 104] +
-      input[counter + 89 + 104] +
+      input[counter + 192] +
+      input[counter + 193] +
       input[counter + 86 + 104] +
       input[counter + 87 + 104], 16
     ),
     w1: parseInt(
-      input[counter + 92 + 104] +
+      input[counter + 196] +
       input[counter + 93 + 104] +
       input[counter + 90 + 104] +
       input[counter + 91 + 104], 16
@@ -1352,19 +1352,19 @@ function parseSensorData(input) {
       input[counter + 96 + 104] +
       input[counter + 97 + 104] +
       input[counter + 94 + 104] +
-      input[counter + 95 + 104], 16
+      input[counter + 199], 16
     ),
     y1: parseInt(
       input[counter + 100 + 104] +
-      input[counter + 101 + 104] +
-      input[counter + 98 + 104] +
+      input[counter + 205] +
+      input[counter + 202] +
       input[counter + 99 + 104], 16
     ),
     z1: parseInt(
-      input[counter + 104 + 104] +
-      input[counter + 105 + 104] +
-      input[counter + 102 + 104] +
-      input[counter + 103 + 104], 16
+      input[counter + 208] +
+      input[counter + 209] +
+      input[counter + 206] +
+      input[counter + 207], 16
     ),
   }
   return sensorData
