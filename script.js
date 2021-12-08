@@ -955,6 +955,7 @@ async function readLoop() {
         }
         log.textContent = "\n" + "hibouDevices found: " + hibouDevices.length + "\n";
       }
+      
       if (value === "SCAN COMPLETE") {
         var select = document.getElementById("devices");
         hibouDevices.map(function(item) {
@@ -1213,14 +1214,14 @@ function parseSensorData(input) {
     a1: parseInt(
       input[counter + 108] +
       input[counter + 109] +
-      input[counter + 2 + 104] +
-      input[counter + 3 + 104], 16
+      input[counter + 106] +
+      input[counter + 107], 16
     ),
     b1: parseInt(
       input[counter + 112] +
-      input[counter + 9 + 104] +
-      input[counter + 6 + 104] +
-      input[counter + 7 + 104], 16
+      input[counter + 113] +
+      input[counter + 110] +
+      input[counter + 111], 16
     ),
     c1: parseInt(
       input[counter + 116] +
@@ -1229,100 +1230,100 @@ function parseSensorData(input) {
       input[counter + 115], 16
     ),
   	d1: parseInt(
-      input[counter + 16 + 104] +
-      input[counter + 17 + 104] +
-      input[counter + 14 + 104] +
-      input[counter + 15 + 104], 16
+      input[counter + 120] +
+      input[counter + 121] +
+      input[counter + 118] +
+      input[counter + 119], 16
     ),
  	  e1: parseInt(
-      input[counter + 20 + 104] +
-      input[counter + 21 + 104] +
-      input[counter + 18 + 104] +
-      input[counter + 19 + 104], 16
+      input[counter + 124] +
+      input[counter + 125] +
+      input[counter + 122] +
+      input[counter + 123], 16
     ),
  	  f1: parseInt(
-      input[counter + 24 + 104] +
-      input[counter + 25 + 104] +
-      input[counter + 22 + 104] +
-      input[counter + 23 + 104], 16
+      input[counter + 128] +
+      input[counter + 129] +
+      input[counter + 126] +
+      input[counter + 127], 16
     ),
     g1: parseInt(
-      input[counter + 28 + 104] +
-      input[counter + 29 + 104] +
-      input[counter + 26 + 104] +
-      input[counter + 27 + 104], 16
+      input[counter + 132] +
+      input[counter + 133] +
+      input[counter + 130] +
+      input[counter + 131], 16
     ),
     h1: parseInt(
-      input[counter + 32 + 104] +
-      input[counter + 33 + 104] +
+      input[counter + 136] +
+      input[counter + 137] +
       input[counter + 134] +
       input[counter + 135], 16
     ),
   	i1: parseInt(
       input[counter + 140] +
       input[counter + 141] +
-      input[counter + 34 + 104] +
+      input[counter + 138] +
       input[counter + 139], 16
     ),
  	  j1: parseInt(
-      input[counter + 40 + 104] +
-      input[counter + 41 + 104] +
-      input[counter + 38 + 104] +
-      input[counter + 39 + 104], 16
+      input[counter + 144] +
+      input[counter + 145] +
+      input[counter + 142] +
+      input[counter + 143], 16
     ),
     k1: parseInt(
-      input[counter + 44 + 104] +
-      input[counter + 45 + 104] +
-      input[counter + 42 + 104] +
-      input[counter + 43 + 104], 16
+      input[counter + 148] +
+      input[counter + 149] +
+      input[counter + 146] +
+      input[counter + 147], 16
     ),
     l1: parseInt(
-      input[counter + 48 + 104] +
-      input[counter + 49 + 104] +
-      input[counter + 46 + 104] +
-      input[counter + 47 + 104], 16
+      input[counter + 152] +
+      input[counter + 153] +
+      input[counter + 150] +
+      input[counter + 151], 16
     ),
     m1: parseInt(
-      input[counter + 52 + 104] +
-      input[counter + 53 + 104] +
-      input[counter + 50 + 104] +
-      input[counter + 51 + 104], 16
+      input[counter + 156] +
+      input[counter + 157] +
+      input[counter + 154] +
+      input[counter + 155], 16
     ),
   	n1: parseInt(
-      input[counter + 56 + 104] +
+      input[counter + 160] +
       input[counter + 161] +
-      input[counter + 54 + 104] +
-      input[counter + 55 + 104], 16
+      input[counter + 158] +
+      input[counter + 159], 16
     ),
  	  o1: parseInt(
-      input[counter + 60 + 104] +
-      input[counter + 61 + 104] +
+      input[counter + 164] +
+      input[counter + 165] +
       input[counter + 162] +
       input[counter + 163], 16
     ),
   	p1: parseInt(
-      input[counter + 64 + 104] +
-      input[counter + 65 + 104] +
-      input[counter + 62 + 104] +
-      input[counter + 63 + 104], 16
+      input[counter + 168] +
+      input[counter + 169] +
+      input[counter + 166] +
+      input[counter + 167], 16
     ),
     q1: parseInt(
-      input[counter + 68 + 104] +
-      input[counter + 69 + 104] +
-      input[counter + 66 + 104] +
-      input[counter + 67 + 104], 16
+      input[counter + 172] +
+      input[counter + 173] +
+      input[counter + 170] +
+      input[counter + 171], 16
     ),
     r1: parseInt(
-      input[counter + 72 + 104] +
-      input[counter + 73 + 104] +
-      input[counter + 70 + 104] +
-      input[counter + 71 + 104], 16
+      input[counter + 176] +
+      input[counter + 177] +
+      input[counter + 174] +
+      input[counter + 175], 16
     ),
   	s1: parseInt(
-      input[counter + 76 + 104] +
-      input[counter + 77 + 104] +
-      input[counter + 74 + 104] +
-      input[counter + 75 + 104], 16
+      input[counter + 180] +
+      input[counter + 181] +
+      input[counter + 178] +
+      input[counter + 179], 16
     ),
  	  t1: parseInt(
       input[counter + 184] +
@@ -1331,40 +1332,331 @@ function parseSensorData(input) {
       input[counter + 183], 16
     ),
     u1: parseInt(
-      input[counter + 84 + 104] +
-      input[counter + 85 + 104] +
-      input[counter + 82 + 104] +
-      input[counter + 83 + 104], 16
+      input[counter + 188] +
+      input[counter + 189] +
+      input[counter + 186] +
+      input[counter + 187], 16
     ),
     v1: parseInt(
       input[counter + 192] +
       input[counter + 193] +
-      input[counter + 86 + 104] +
-      input[counter + 87 + 104], 16
+      input[counter + 190] +
+      input[counter + 191], 16
     ),
     w1: parseInt(
       input[counter + 196] +
-      input[counter + 93 + 104] +
-      input[counter + 90 + 104] +
-      input[counter + 91 + 104], 16
+      input[counter + 197] +
+      input[counter + 194] +
+      input[counter + 195], 16
     ),
     x1: parseInt(
-      input[counter + 96 + 104] +
-      input[counter + 97 + 104] +
-      input[counter + 94 + 104] +
+      input[counter + 200] +
+      input[counter + 201] +
+      input[counter + 198] +
       input[counter + 199], 16
     ),
     y1: parseInt(
-      input[counter + 100 + 104] +
+      input[counter + 204] +
       input[counter + 205] +
       input[counter + 202] +
-      input[counter + 99 + 104], 16
+      input[counter + 203], 16
     ),
     z1: parseInt(
       input[counter + 208] +
       input[counter + 209] +
       input[counter + 206] +
       input[counter + 207], 16
+    ),
+
+    a2: parseInt(
+      input[counter + 212] +
+      input[counter + 213] +
+      input[counter + 210] +
+      input[counter + 211], 16
+    ),
+    b2: parseInt(
+      input[counter + 216] +
+      input[counter + 217] +
+      input[counter + 214] +
+      input[counter + 215], 16
+    ),
+    c2: parseInt(
+      input[counter + 116 + 104] +
+      input[counter + 117 + 104] +
+      input[counter + 218] +
+      input[counter + 115 + 104], 16
+    ),
+  	d2: parseInt(
+      input[counter + 16 + 104 + 104] +
+      input[counter + 17 + 104 + 104] +
+      input[counter + 222] +
+      input[counter + 15 + 104 + 104], 16
+    ),
+ 	  e2: parseInt(
+      input[counter + 20 + 104 + 104] +
+      input[counter + 21 + 104 + 104] +
+      input[counter + 226] +
+      input[counter + 19 + 104 + 104], 16
+    ),
+ 	  f2: parseInt(
+      input[counter + 24 + 104 + 104] +
+      input[counter + 25 + 104 + 104] +
+      input[counter + 22 + 104 + 104] +
+      input[counter + 23 + 104 + 104], 16
+    ),
+    g2: parseInt(
+      input[counter + 132 + 104] +
+      input[counter + 133 + 104] +
+      input[counter + 130 + 104] +
+      input[counter + 131 + 104], 16
+    ),
+    h2: parseInt(
+      input[counter + 136 + 104] +
+      input[counter + 137 + 104] +
+      input[counter + 134 + 104] +
+      input[counter + 135 + 104], 16
+    ),
+  	i2: parseInt(
+      input[counter + 140 + 104] +
+      input[counter + 141 + 104] +
+      input[counter + 34 + 104 + 104] +
+      input[counter + 139 + 104], 16
+    ),
+ 	  j2: parseInt(
+      input[counter + 40 + 104 + 104] +
+      input[counter + 41 + 104 + 104] +
+      input[counter + 38 + 104 + 104] +
+      input[counter + 39 + 104 + 104], 16
+    ),
+    k2: parseInt(
+      input[counter + 44 + 104 + 104] +
+      input[counter + 45 + 104 + 104] +
+      input[counter + 42 + 104 + 104] +
+      input[counter + 43 + 104 + 104], 16
+    ),
+    l2: parseInt(
+      input[counter + 48 + 104 + 104] +
+      input[counter + 49 + 104 + 104] +
+      input[counter + 46 + 104 + 104] +
+      input[counter + 47 + 104 + 104], 16
+    ),
+    m2: parseInt(
+      input[counter + 52 + 104 + 104] +
+      input[counter + 53 + 104 + 104] +
+      input[counter + 258] +
+      input[counter + 259], 16
+    ),
+  	n2: parseInt(
+      input[counter + 56 + 104 + 104] +
+      input[counter + 161 + 104] +
+      input[counter + 262] +
+      input[counter + 55 + 104 + 104], 16
+    ),
+ 	  o2: parseInt(
+      input[counter + 60 + 104 + 104] +
+      input[counter + 61 + 104 + 104] +
+      input[counter + 266] +
+      input[counter + 163 + 104], 16
+    ),
+  	p2: parseInt(
+      input[counter + 64 + 104 + 104] +
+      input[counter + 65 + 104 + 104] +
+      input[counter + 270] +
+      input[counter + 271], 16
+    ),
+    q2: parseInt(
+      input[counter + 276] +
+      input[counter + 277] +
+      input[counter + 274] +
+      input[counter + 275], 16
+    ),
+    r2: parseInt(
+      input[counter + 280] +
+      input[counter + 281] +
+      input[counter + 278] +
+      input[counter + 279], 16
+    ),
+  	s2: parseInt(
+      input[counter + 282] +
+      input[counter + 283] +
+      input[counter + 280] +
+      input[counter + 281], 16
+    ),
+ 	  t2: parseInt(
+      input[counter + 288] +
+      input[counter + 289] +
+      input[counter + 286] +
+      input[counter + 287], 16
+    ),
+    u2: parseInt(
+      input[counter + 84 + 104 + 104] +
+      input[counter + 85 + 104 + 104] +
+      input[counter + 290] +
+      input[counter + 83 + 104 + 104], 16
+    ),
+    v2: parseInt(
+      input[counter + 192 + 104] +
+      input[counter + 193 + 104] +
+      input[counter + 294] +
+      input[counter + 87 + 104 + 104], 16
+    ),
+    w2: parseInt(
+      input[counter + 300] +
+      input[counter + 301] +
+      input[counter + 298] +
+      input[counter + 299], 16
+    ),
+    x2: parseInt(
+      input[counter + 304] +
+      input[counter + 305] +
+      input[counter + 302] +
+      input[counter + 303], 16
+    ),
+    y2: parseInt(
+      input[counter + 308] +
+      input[counter + 309] +
+      input[counter + 306] +
+      input[counter + 307], 16
+    ),
+    z2: parseInt(
+      input[counter + 312] +
+      input[counter + 313] +
+      input[counter + 310] +
+      input[counter + 311], 16
+    ),
+
+    
+    a3: parseInt(
+      input[counter + 212 + 104] +
+      input[counter + 213 + 104] +
+      input[counter + 314] +
+      input[counter + 211 + 104], 16
+    ),
+    b3: parseInt(
+      input[counter + 112 + 104 + 104] +
+      input[counter + 113 + 104 + 104] +
+      input[counter + 318] +
+      input[counter + 111 + 104 + 104], 16
+    ),
+    c3: parseInt(
+      input[counter + 116 + 104 + 104] +
+      input[counter + 117 + 104 + 104] +
+      input[counter + 322] +
+      input[counter + 115 + 104 + 104], 16
+    ),
+  	d3: parseInt(
+      input[counter + 16 + 104 + 104 + 104] +
+      input[counter + 17 + 104 + 104 + 104] +
+      input[counter + 326] +
+      input[counter + 15 + 104 + 104 + 104], 16
+    ),
+ 	  e3: parseInt(
+      input[counter + 20 + 104 + 104 + 104] +
+      input[counter + 21 + 104 + 104 + 104] +
+      input[counter + 330] +
+      input[counter + 19 + 104 + 104 + 104], 16
+    ),
+ 	  f3: parseInt(
+      input[counter + 24 + 104 + 104 + 104] +
+      input[counter + 25 + 104 + 104 + 104] +
+      input[counter + 334] +
+      input[counter + 23 + 104 + 104 + 104], 16
+    ),
+    g3: parseInt(
+      input[counter + 132 + 104 + 104] +
+      input[counter + 133 + 104 + 104] +
+      input[counter + 338] +
+      input[counter + 131 + 104 + 104], 16
+    ),
+    h3: parseInt(
+      input[counter + 136 + 104 + 104] +
+      input[counter + 137 + 104 + 104] +
+      input[counter + 342] +
+      input[counter + 135 + 104 + 104], 16
+    ),
+  	i3: parseInt(
+      input[counter + 140 + 104 + 104] +
+      input[counter + 141 + 104 + 104] +
+      input[counter + 346] +
+      input[counter + 139 + 104 + 104], 16
+    ),
+ 	  j3: parseInt(
+      input[counter + 40 + 104 + 104 + 104] +
+      input[counter + 41 + 104 + 104 + 104] +
+      input[counter + 350] +
+      input[counter + 39 + 104 + 104 + 104], 16
+    ),
+    k3: parseInt(
+      input[counter + 356] +
+      input[counter + 357] +
+      input[counter + 354] +
+      input[counter + 355], 16
+    ),
+    l3: parseInt(
+      input[counter + 360] +
+      input[counter + 361] +
+      input[counter + 358] +
+      input[counter + 359], 16
+    ),
+    m3: parseInt(
+      input[counter + 52 + 104 + 104 + 104] +
+      input[counter + 53 + 104 + 104 + 104] +
+      input[counter + 362] +
+      input[counter + 51 + 104 + 104 + 104], 16
+    ),
+  	n3: parseInt(
+      input[counter + 56 + 104 + 104 + 104] +
+      input[counter + 161 + 104 + 104] +
+      input[counter + 366] +
+      input[counter + 367], 16
+    ),
+ 	  o3: parseInt(
+      input[counter + 60 + 104 + 104 + 104] +
+      input[counter + 61 + 104 + 104 + 104] +
+      input[counter + 370] +
+      input[counter + 163 + 104 + 104], 16
+    ),
+  	p3: parseInt(
+      input[counter + 376] +
+      input[counter + 377] +
+      input[counter + 374] +
+      input[counter + 375], 16
+    ),
+    q3: parseInt(
+      input[counter + 380] +
+      input[counter + 381] +
+      input[counter + 378] +
+      input[counter + 379], 16
+    ),
+    r3: parseInt(
+      input[counter + 280 + 104] +
+      input[counter + 281 + 104] +
+      input[counter + 382] +
+      input[counter + 279 + 104], 16
+    ),
+  	s3: parseInt(
+      input[counter + 76 + 104 + 104 + 104] +
+      input[counter + 77 + 104 + 104 + 104] +
+      input[counter + 386] +
+      input[counter + 75 + 104 + 104 + 104], 16
+    ),
+ 	  t3: parseInt(
+      input[counter + 184 + 104 + 104] +
+      input[counter + 185 + 104 + 104] +
+      input[counter + 390] +
+      input[counter + 183 + 104 + 104], 16
+    ),
+    u3: parseInt(
+      input[counter + 396] +
+      input[counter + 397] +
+      input[counter + 394] +
+      input[counter + 395], 16
+    ),
+    v3: parseInt(
+      input[counter + 400] +
+      input[counter + 401] +
+      input[counter + 398] +
+      input[counter + 399], 16
     ),
   }
   return sensorData
